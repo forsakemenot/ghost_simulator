@@ -58,3 +58,20 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+#unity temp 
+
+ghost_simulator/obj/
+ghost_simulator/Assembly-CSharp.csproj.meta
+ghost_simulator/Assembly-CSharp-Editor.csproj.meta
+ghost_simulator/Assembly-CSharp-firstpass.csproj.meta
+ghost_simulator/Assets/Plugins/Editor/JetBrains/
+ghost_simulator/SwitchIL2CPPCache/
+ghost_simulator/Assembly-CSharp.csproj
+ghost_simulator/HellsMngr.sln
+ghost_simulator/Library
+ghost_simulator/Temp
+*idea
+/obj
+.csproj
+/.idea
+/Jetbrain
