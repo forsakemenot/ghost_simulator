@@ -1,13 +1,22 @@
-﻿using Interactables;
+﻿using System;
+using Interactables;
+using PlayerSystem;
 using TMPro;
 using UnityEngine;
 
 public class CameraRaycaster : MonoBehaviour
 {
 
-    [SerializeField] private TextMeshProUGUI interactText; 
+    [SerializeField] private TextMeshProUGUI interactText;
 
-    
+    private PlayerEntityController _playerEntityController;   
+        
+    private void Start()
+    {
+        _playerEntityController = GetComponent<PlayerEntityController>();
+    }
+
+
     private void FixedUpdate()
     {
         if (Physics.Raycast(transform.position,transform.forward, out var rayCastHit, 10))
@@ -21,7 +30,7 @@ public class CameraRaycaster : MonoBehaviour
 
             ShowDisplayOption(hitItem);
             if(Input.GetKeyDown(KeyCode.E))
-                hitItem.Execute();
+                hitItem.Execute(_playerEntityController);
         }
     }
 

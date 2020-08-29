@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PlayerSystem;
+using UnityEngine;
 
 namespace Interactables
 {
@@ -7,7 +8,7 @@ namespace Interactables
         public string interactionName;
         public float staminaCost;
     
-        public virtual void Execute()
+        public virtual void Execute(PlayerEntityController playerEntityController)
         {   
         }
     }

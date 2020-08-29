@@ -1,21 +1,25 @@
-﻿using System;
-using Interactables;
+﻿using PlayerSystem;
 using UnityEngine;
 
-public class PotPlantInteraction : ItemInteraction
+namespace Interactables
 {
-    private  Rigidbody _rigidbody;
+    public class PotPlantInteraction : ItemInteraction
+    {
+        private  Rigidbody _rigidbody;
     
     
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-        interactionName = "KickOver";
-    }
+        private void Start()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+            interactionName = "KickOver";
+            staminaCost = 10;
+        }
 
 
-    public override void Execute()
-    {
-        _rigidbody.AddForce(-transform.forward*3, ForceMode.Impulse);
+        public override void Execute(PlayerEntityController playerEntityController)
+        {
+            playerEntityController.DeductStamina(staminaCost);
+            _rigidbody.AddForce(-transform.forward*3, ForceMode.Impulse);
+        }
     }
 }

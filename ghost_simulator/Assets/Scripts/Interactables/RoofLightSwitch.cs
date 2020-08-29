@@ -1,35 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using Interactables;
+﻿using System.Collections.Generic;
+using PlayerSystem;
 using UnityEngine;
 
-public class RoofLightSwitch : ItemInteraction
+namespace Interactables
 {
-    [SerializeField] private List<Light> lights;
-    private bool _isLightEnabled;
-
-    private void Start()
+    public class RoofLightSwitch : ItemInteraction
     {
-        interactionName = "Turn Off";
-    }
+        [SerializeField] private List<Light> lights;
+        private bool _isLightEnabled;
 
-    public override void  Execute()
-    {
-        EnableLight(!_isLightEnabled);   
-    }
+        private void Start()
+        {
+            interactionName = "Turn Off";
+        }
 
-    private void EnableLight(bool isEnable)
-    {
-        foreach (var lightElement in lights) 
-            lightElement.intensity = isEnable ? 1 : 0;
+        public override void Execute(PlayerEntityController playerEntityController)
+        {
+            EnableLight(!_isLightEnabled);   
+        }
+
+        private void EnableLight(bool isEnable)
+        {
+            foreach (var lightElement in lights) 
+                lightElement.intensity = isEnable ? 1 : 0;
         
         
-        _isLightEnabled = !_isLightEnabled;  
-        UpdateInteractionName(_isLightEnabled);   
-    }
+            _isLightEnabled = !_isLightEnabled;  
+            UpdateInteractionName(_isLightEnabled);   
+        }
 
-    private void UpdateInteractionName(bool isLightEnabled)
-    {
-        interactionName = isLightEnabled ? "Turn Off" : "Turn On";
+        private void UpdateInteractionName(bool isLightEnabled)
+        {
+            interactionName = isLightEnabled ? "Turn Off" : "Turn On";
+        }
     }
 }

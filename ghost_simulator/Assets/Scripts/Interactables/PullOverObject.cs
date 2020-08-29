@@ -1,24 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Interactables;
+﻿using PlayerSystem;
 using UnityEngine;
 
-
-[RequireComponent(typeof(Rigidbody))]
-public class PullOverObject : ItemInteraction
+namespace Interactables
 {
-
-    private Rigidbody _rigidbody;
-    [SerializeField] private float _strength = 1;
-
-    private void Start()
+    [RequireComponent(typeof(Rigidbody))]
+    public class PullOverObject : ItemInteraction
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        interactionName = "Pull Over";
-    }
+
+        private Rigidbody _rigidbody;
+        [SerializeField] private float _strength = 1;
+
+        private void Start()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+            interactionName = "Pull Over";
+        }
     
-    public override void Execute()
-    {
-        _rigidbody.AddForce(transform.forward * _strength, ForceMode.Impulse);      
+        public override void Execute(PlayerEntityController playerEntityController)
+        {
+            _rigidbody.AddForce(transform.forward * _strength, ForceMode.Impulse);      
+        }
     }
 }
