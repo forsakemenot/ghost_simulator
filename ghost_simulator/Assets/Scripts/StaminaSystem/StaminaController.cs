@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace StatminaSystem
+namespace StaminaSystem
 {
     public class StaminaController : MonoBehaviour
     {
@@ -18,10 +18,11 @@ namespace StatminaSystem
         {
             _currentStamina -= changes;
             staminaDisplayController.RefreshStamina(_currentStamina);
-            if (_currentStamina <= 0)
-            {
-                //TODO :: GameOver
-            }
-        }    
+        }
+
+        public float GetCurrentStamina()
+        {
+            return _currentStamina;
+        }
     }
 }

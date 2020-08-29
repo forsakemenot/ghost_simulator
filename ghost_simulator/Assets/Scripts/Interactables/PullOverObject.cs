@@ -14,6 +14,7 @@ namespace Interactables
         {
             _rigidbody = GetComponent<Rigidbody>();
             interactionName = "Pull Over";
+            staminaCost = 3;
         }
     
         public override void Execute(PlayerEntityController playerEntityController)

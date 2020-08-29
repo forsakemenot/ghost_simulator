@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace StatminaSystem
+namespace StaminaSystem
 {
     public class StaminaDisplayController : MonoBehaviour
     {

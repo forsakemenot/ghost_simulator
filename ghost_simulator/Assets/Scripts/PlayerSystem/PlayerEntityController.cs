@@ -1,5 +1,6 @@
-﻿using StatminaSystem;
+﻿using StaminaSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PlayerSystem
 {
@@ -14,7 +15,20 @@ namespace PlayerSystem
 
         public void DeductStamina(float changes)
         {
+            var currentStamina =_staminaController.GetCurrentStamina();
+            if (currentStamina - changes <= 0)
+            {
+                GameOver();
+                return;
+            }
+            
             _staminaController.UseStamina(changes);
+        }
+
+        private void GameOver()
+        {
+            Debug.LogError("Reload Scene");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

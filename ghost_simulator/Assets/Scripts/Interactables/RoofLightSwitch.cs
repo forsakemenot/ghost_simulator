@@ -12,6 +12,7 @@ namespace Interactables
         private void Start()
         {
             interactionName = "Turn Off";
+            staminaCost = 2;
         }
 
         public override void Execute(PlayerEntityController playerEntityController)
