@@ -1,6 +1,5 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.XR.WSA.Persistence;
 
 namespace TimerSystem
 {
@@ -12,11 +11,7 @@ namespace TimerSystem
      
         private void Update()
         {
-
-            float convertedToSecond = timerController.GetAccumulateTime()/60;
-            Debug.LogError(timerController.GetAccumulateTime() + " : "+timerController.GetAccumulateTime() /60);
-            
-            // timerController
+            var convertedToSecond = timerController.GetAccumulateTime()/60;
             timerText.text =convertedToSecond.ToString("#.##");
         }
     }

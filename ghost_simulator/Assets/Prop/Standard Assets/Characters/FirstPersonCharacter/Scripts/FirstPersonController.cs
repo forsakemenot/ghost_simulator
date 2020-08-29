@@ -94,6 +94,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
+            RotateView();
 
             UpdateCameraPosition(speed);
         }
@@ -102,16 +103,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
        
             m_MouseLook.UpdateCursorLock();
-        }
-
-        
-        private void LateUpdate()
-        {
-            RotateView();
-            
-            
-            
-            
         }
 
 
