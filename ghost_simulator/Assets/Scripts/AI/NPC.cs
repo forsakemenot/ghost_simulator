@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Interactables;
+using System.Linq;
 
 public enum AIState
 {
@@ -19,13 +21,20 @@ public class NPC : MonoBehaviour
     public Transform[] RoamDestinations; // Could randomize later
 
     [Header("Scary reactions")]
-    public float DetectionRange;
-    public float ShockLength;
+    public float FOV;
+    //public float ItemDetectionRange; // we could have a DetectionRange field in the item itself, a fire could be more visible than a fallen book
+    public float ShockLength; // could be affected by the items ?
 
     public AIState state; // should be priavet but for easy debug
     private int currentDestId;
     private NavMeshAgent navAgent;
     private float idleStartTime;
+
+    public List<InteractableItem> scaryItems; // TODO : In real scene, when the player interact with an item add it to the list of item AI should react to ?
+                                              // then remove them from the list once the AI has reacted to it
+                                              // if multiple AI each have their list of objects they need to react to ?
+
+    public Vector3 EyesPosition { get { return transform.position + new Vector3(0, navAgent.height / 2.0f, 0); } }
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +43,7 @@ public class NPC : MonoBehaviour
 
         state = AIState.Roaming;
         SetNextRoamingDestination();
+        scaryItems = GameObject.FindObjectsOfType<InteractableItem>().ToList();
     }
 
     // Update is called once per frame
@@ -48,6 +58,8 @@ public class NPC : MonoBehaviour
             case AIState.Roaming:
                 CheckRoamDestinationReached();
                 // Check sight line
+                CheckSightForAllItems();
+
                 break;
 
             case AIState.Suspicious:
@@ -55,6 +67,7 @@ public class NPC : MonoBehaviour
                 break;
 
             case AIState.Shocked:
+                RoamingToIdle(); // temp for shock state
                 break;
 
             default:
@@ -117,5 +130,65 @@ public class NPC : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void CheckSightForAllItems()
+    {
+        InteractableItem itemReactedTo = null; // need this otherwise c# cries cause we modify the collection during a loop
+
+        foreach (InteractableItem item in scaryItems)
+        {
+            if(TryReactToItem(item))
+            {
+                itemReactedTo = item;
+                break;
+            }
+        }
+
+        if(itemReactedTo != null)
+        {
+            scaryItems.Remove(itemReactedTo);
+        }
+    }
+
+    public bool TryReactToItem(InteractableItem item)
+    {
+        Vector3 aiToItem = item.transform.position - EyesPosition;
+        float sightToItemAngle = Vector3.Angle(aiToItem, transform.forward);
+
+        if (sightToItemAngle <= FOV / 2.0f) // is object in FOV ?
+        {
+            if (Physics.Raycast(EyesPosition, aiToItem.normalized, out RaycastHit hit, item.DetectionDistance)) // does the AI has direct sight on the object (TODO : Make sure the view is only blocked by relevant objects)
+            {
+                if(hit.collider.gameObject == item.gameObject)
+                {
+                    return ReactToItem(item);
+                }
+            }
+
+            Debug.DrawRay(EyesPosition, aiToItem.normalized * item.DetectionDistance, Color.green);
+        }
+
+        return false;
+    }
+
+    private bool ReactToItem(InteractableItem item) // useless method rightNow, but i keep it if we had other reactions later ?
+    {
+        switch(item.currentState)
+        {
+            case ItemState.Modified:
+                ApplyFear(item);
+                return true;
+
+            default:
+                return false;
+        }
+    }
+
+    private void ApplyFear(InteractableItem item)
+    {
+        Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
+        navAgent.SetDestination(transform.position);
+        state = AIState.Shocked;
     }
 }
