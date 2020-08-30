@@ -1,4 +1,5 @@
-﻿using StaminaSystem;
+﻿using ScoreSystem;
+using StaminaSystem;
 using TimerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,10 +10,16 @@ namespace PlayerSystem
     {
         private StaminaController _staminaController;
         private TimerController _timer;
+        private ScoreController _scoreController;
+        
 
         private void Start()
         {
             _staminaController = GetComponent<StaminaController>();
+
+            _scoreController = FindObjectOfType<ScoreController>();
+            _scoreController.ResetScore();
+            
             _timer = GetComponent<TimerController>();
             _timer.StartTimer();
         }
@@ -32,6 +39,26 @@ namespace PlayerSystem
         private void Update()
         {
             HandleTimerCheck();
+
+            HandleAddToScore();
+
+        }
+
+
+        private void HandleAddToScore()
+        {
+            //TODO:: Please add to score from enemy spooked event or something;
+            if(Input.GetKeyDown(KeyCode.Q))
+                AddToScore(100);
+
+            HandleSkillUnlockCheck();
+        }
+
+        private void HandleSkillUnlockCheck()
+        {
+            
+            //TODO:: Handle Skill threshold here
+            
         }
 
         private void HandleTimerCheck()
@@ -45,5 +72,10 @@ namespace PlayerSystem
             Debug.LogError("Reload Scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        private void AddToScore(float change)
+        {
+            _scoreController.AddToScore(change);
+        } 
     }
 }
