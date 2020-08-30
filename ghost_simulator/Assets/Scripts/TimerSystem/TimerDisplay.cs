@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace TimerSystem
@@ -11,8 +12,8 @@ namespace TimerSystem
      
         private void Update()
         {
-            var convertedToSecond = timerController.GetAccumulateTime()/60;
-            timerText.text =convertedToSecond.ToString("#.##");
+            var timeSpan = TimeSpan.FromMilliseconds( timerController.GetCurrentRemainingTime());
+            timerText.text = timeSpan.ToString(@"mm\:ss");
         }
     }
 }

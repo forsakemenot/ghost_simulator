@@ -14,7 +14,7 @@ namespace PlayerSystem
         {
             _staminaController = GetComponent<StaminaController>();
             _timer = GetComponent<TimerController>();
-            _timer.SetTimerEnable(true);
+            _timer.StartTimer();
         }
 
         public void DeductStamina(float changes)

@@ -511,4 +511,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e9b36994a2aed4d9dfec3032ddc509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTimeLimit: 120
+  totalTimeLimitMs: 120000

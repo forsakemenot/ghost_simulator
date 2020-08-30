@@ -1,52 +1,65 @@
-﻿using System;
-using System.Timers;
+﻿using System.Diagnostics;
 using UnityEngine;
 
 namespace TimerSystem
 {
     public class TimerController : MonoBehaviour
     {
-        [SerializeField] private float totalTimeLimit;
+        [SerializeField] private float totalTimeLimitMs;
         
-        
-        private float _accumulate;
-        private bool _isTicking;
         private bool _isCompleted;
+        private Stopwatch _timerStopwatch;
+        private bool _isTicking;
+        private float _currentRemainingTime;
 
-        private void Start()
+        private void Awake()
         {
-            Reset();
+            _timerStopwatch = new Stopwatch();
+        }
+
+        private void FixedUpdate()
+        {
+            if (!_isTicking) return;
+            if (_currentRemainingTime > 0)
+                _currentRemainingTime = totalTimeLimitMs - GetTimerElaspsedMs();
+            else
+            {
+                _isCompleted = true;
+                StopTimer();
+            }
+        }
+
+        public float GetCurrentRemainingTime()
+        {
+            return _currentRemainingTime;
         }
         
         
-        public void SetTimerEnable( bool isEnable)
+        
+
+        private long GetTimerElaspsedMs()
         {
-            _isTicking = isEnable;
+            return _isTicking ? _timerStopwatch.ElapsedMilliseconds : long.MaxValue;
         }
 
-        public float GetAccumulateTime()
+        public void StartTimer()
         {
-            return _accumulate;
+            _currentRemainingTime = totalTimeLimitMs*100;
+            _timerStopwatch.Reset();
+            _timerStopwatch.Start();
+            _isTicking = true;
+        }
+
+        public void StopTimer()
+        {
+            _timerStopwatch.Stop();
+            _timerStopwatch.Reset();
+            _isTicking = true;
         }
 
         public bool GetTimerStatus()
         {
             return _isCompleted;
-        }
-
-        public void Reset()
-        {
-            _accumulate = totalTimeLimit;
-        }
-         
-        private void FixedUpdate()
-        {
-            if (_isTicking)
-            {
-                _accumulate -= Time.deltaTime;
-                if (_accumulate <= 0)
-                    _isCompleted = true;
-            }
         }
     }
 }
