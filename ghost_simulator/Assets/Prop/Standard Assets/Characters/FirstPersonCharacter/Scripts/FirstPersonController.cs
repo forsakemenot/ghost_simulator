@@ -43,6 +43,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        public bool IsPause;
+
         // Use this for initialization
         private void Start()
         {
@@ -63,6 +65,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Update()
         {
 
+            if (IsPause) return;
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded) m_MoveDir.y = 0f;
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) m_MoveDir.y = 0f;
 
