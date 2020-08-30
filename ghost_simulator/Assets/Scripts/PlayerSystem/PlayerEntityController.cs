@@ -11,7 +11,7 @@ namespace PlayerSystem
         private StaminaController _staminaController;
         private TimerController _timer;
         private ScoreController _scoreController;
-        
+        private SkillController _skillController;
 
         private void Start()
         {
@@ -19,9 +19,12 @@ namespace PlayerSystem
 
             _scoreController = FindObjectOfType<ScoreController>();
             _scoreController.ResetScore();
+
+            _skillController = FindObjectOfType<SkillController>();
             
             _timer = GetComponent<TimerController>();
             _timer.StartTimer();
+            HandleSkillUnlockCheck();
         }
 
         public void DeductStamina(float changes)
@@ -48,17 +51,20 @@ namespace PlayerSystem
         private void HandleAddToScore()
         {
             //TODO:: Please add to score from enemy spooked event or something;
-            if(Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
                 AddToScore(100);
+                HandleSkillUnlockCheck();
+            }
 
-            HandleSkillUnlockCheck();
+
         }
 
         private void HandleSkillUnlockCheck()
         {
             
             //TODO:: Handle Skill threshold here
-            
+            _skillController.CheckIfSkillUnlocked(_scoreController.GetCurrentScore());
         }
 
         private void HandleTimerCheck()

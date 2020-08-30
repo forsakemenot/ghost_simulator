@@ -17,7 +17,5 @@ namespace ScoreSystem
         {
             scoreTextMesh.text = "Score : "+currentScore;
         }
-        
-        
     }
 }
