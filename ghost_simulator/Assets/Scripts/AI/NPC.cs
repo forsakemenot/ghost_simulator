@@ -16,6 +16,8 @@ public enum AIState
 
 public class NPC : MonoBehaviour
 {
+    public Material testMat;
+
     [Header("Movement")]
     public float idleDuration; // Could give different idle time depending on previous state (ie: idleAfterRoamDuration, idleAfterShockDuration...) but this is just a demo so...
     public Transform[] RoamDestinations; // Could randomize later
@@ -30,20 +32,22 @@ public class NPC : MonoBehaviour
     private NavMeshAgent navAgent;
     private float idleStartTime;
 
-    public List<InteractableItem> scaryItems; // TODO : In real scene, when the player interact with an item add it to the list of item AI should react to ?
-                                              // then remove them from the list once the AI has reacted to it
-                                              // if multiple AI each have their list of objects they need to react to ?
+    public List<InteractableItem> ScaryItems { get; set; } = new List<InteractableItem>();  // When the player interact with an item add it to the list of item AI should react to ?
+                                                                                            // then remove them from the list once the AI has reacted to it
 
     public Vector3 EyesPosition { get { return transform.position + new Vector3(0, navAgent.height / 2.0f, 0); } }
+
+    public bool IsAvailableForSightCheck { get{ return state != AIState.Shocked; } }
 
     // Start is called before the first frame update
     void Start()
     {
+        testMat.color = Color.white;
         navAgent = GetComponent<NavMeshAgent>();
 
         state = AIState.Roaming;
         SetNextRoamingDestination();
-        scaryItems = GameObject.FindObjectsOfType<InteractableItem>().ToList();
+        //scaryItems = GameObject.FindObjectsOfType<InteractableItem>().ToList();
     }
 
     // Update is called once per frame
@@ -78,6 +82,7 @@ public class NPC : MonoBehaviour
 
     private void IdleToRoaming()
     {
+        testMat.color = Color.white;
         StartRoaming();
     }
 
@@ -136,7 +141,7 @@ public class NPC : MonoBehaviour
     {
         InteractableItem itemReactedTo = null; // need this otherwise c# cries cause we modify the collection during a loop
 
-        foreach (InteractableItem item in scaryItems)
+        foreach (InteractableItem item in ScaryItems)
         {
             if(TryReactToItem(item))
             {
@@ -147,7 +152,7 @@ public class NPC : MonoBehaviour
 
         if(itemReactedTo != null)
         {
-            scaryItems.Remove(itemReactedTo);
+            ScaryItems.Remove(itemReactedTo);
         }
     }
 
@@ -189,6 +194,7 @@ public class NPC : MonoBehaviour
     {
         Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
         navAgent.SetDestination(transform.position);
+        testMat.color = Color.blue;
         state = AIState.Shocked;
     }
 }
