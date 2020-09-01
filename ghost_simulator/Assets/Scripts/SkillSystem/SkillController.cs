@@ -1,46 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using PlayerSystem;
 using UnityEngine;
 
-public class SkillController : MonoBehaviour
+namespace SkillSystem
 {
-    [SerializeField] private List<SkillData> skillList = new List<SkillData>();
-    [SerializeField] private CameraRaycaster rayCaster;
-
-
-
-    public void CheckIfSkillUnlocked(float currentScore)
+    public class SkillController : MonoBehaviour
     {
-        var unlockedSkill = new List<SkillData>();
-        foreach (var skillData in skillList)
+        [SerializeField] private List<SkillData> skillList = new List<SkillData>();
+        private CameraRaycaster _rayCaster;
+
+
+        private void Start()
         {
-            if (skillData.scoreToUnlock < currentScore)
-            {
-                unlockedSkill.Add(skillData);
-            }
+            _rayCaster = FindObjectOfType<CameraRaycaster>();
         }
 
-        UpdateInteractionAbility(unlockedSkill);
-    }
 
-    private void UpdateInteractionAbility(List<SkillData> unlockedSkill)
-    {
-        foreach (var skillData in unlockedSkill)
+        public void CheckIfSkillUnlocked(float currentScore)
         {
-            switch (skillData.skillType)
+            var unlockedSkill = new List<SkillData>();
+            foreach (var skillData in skillList)
+                if (skillData.scoreToUnlock < currentScore)
+                    unlockedSkill.Add(skillData);
+
+            UpdateInteractionAbility(unlockedSkill);
+        }
+
+        private void UpdateInteractionAbility(List<SkillData> unlockedSkill)
+        {
+            foreach (var skillData in unlockedSkill)
             {
-                case SkillType.Interaction:
-                    rayCaster.EnableInteraction();
-                    break;
-                case SkillType.PickupObject:
-                    rayCaster.EnablePickup();
-                    break;
-                case SkillType.SelfReveal :
-                    break;
+                switch (skillData.skillType)
+                {
+                    case SkillType.Interaction:
+                        _rayCaster.EnableInteraction();
+                        break;
+                    case SkillType.PickupObject:
+                        _rayCaster.EnablePickup();
+                        break;
+                    case SkillType.SelfReveal :
+                        break;
                     
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }    
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }    
+        }
     }
 }
