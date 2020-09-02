@@ -16,8 +16,6 @@ public enum AIState
 
 public class NPC : MonoBehaviour
 {
-    public Material testMat;
-
     [Header("Movement")]
     public float idleDuration; // Could give different idle time depending on previous state (ie: idleAfterRoamDuration, idleAfterShockDuration...) but this is just a demo so...
     public Transform[] RoamDestinations; // Could randomize later
@@ -27,10 +25,11 @@ public class NPC : MonoBehaviour
     //public float ItemDetectionRange; // we could have a DetectionRange field in the item itself, a fire could be more visible than a fallen book
     public float ShockLength; // could be affected by the items ?
 
-    public AIState state; // should be priavet but for easy debug
+    public AIState state; // should be private but for i set public for easy debug
     private int currentDestId;
     private NavMeshAgent navAgent;
     private float idleStartTime;
+    private Animator anim;
 
     public List<InteractableItem> ScaryItems { get; set; } = new List<InteractableItem>();  // When the player interact with an item add it to the list of item AI should react to ?
                                                                                             // then remove them from the list once the AI has reacted to it
@@ -42,8 +41,9 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        testMat.color = Color.white;
+        //testMat.color = Color.white;
         navAgent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
 
         state = AIState.Roaming;
         SetNextRoamingDestination();
@@ -82,7 +82,7 @@ public class NPC : MonoBehaviour
 
     private void IdleToRoaming()
     {
-        testMat.color = Color.white;
+        //testMat.color = Color.white;
         StartRoaming();
     }
 
@@ -93,14 +93,18 @@ public class NPC : MonoBehaviour
 
     private void StartIdle()
     {
+        Debug.Log("Start Idle");
         state = AIState.Idle;
         idleStartTime = Time.time;
+        anim.SetTrigger("IdleStart");
     }
 
     private void StartRoaming()
     {
+        Debug.Log("Start Walk");
         state = AIState.Roaming;
         SetNextRoamingDestination();
+        anim.SetTrigger("WalkStart");
     }
 
     private void SetNextRoamingDestination()
@@ -194,7 +198,7 @@ public class NPC : MonoBehaviour
     {
         Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
         navAgent.SetDestination(transform.position);
-        testMat.color = Color.blue;
+        //testMat.color = Color.blue;
         state = AIState.Shocked;
     }
 }
