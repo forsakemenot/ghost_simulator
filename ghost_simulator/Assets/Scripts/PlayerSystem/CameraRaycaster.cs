@@ -12,6 +12,7 @@ namespace PlayerSystem
         private PlayerEntityController _playerEntityController;
         private bool _isInteractionEnable;
         private bool _isPickupEnable;
+        private GameObject _pickedObject;
 
         private void Start()
         {
@@ -21,6 +22,7 @@ namespace PlayerSystem
 
         private void FixedUpdate()
         {
+
             if (Physics.Raycast(transform.position, transform.forward, out var rayCastHit, 10))
             {
                 var hitItem = rayCastHit.transform.GetComponent<ItemInteraction>();
@@ -35,21 +37,8 @@ namespace PlayerSystem
                     if (Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         var pickupItemRigidbody = hitItem.GetComponent<Rigidbody>();
-
-                        if (holdObjectTransform.childCount == 0)
-                        {
-                            pickupItemRigidbody.useGravity = false;
-                            pickupItemRigidbody.isKinematic = true;
-                            hitItem.transform.SetParent(holdObjectTransform);
-                            hitItem.transform.localPosition = Vector3.zero;
-                        }
-                        else
-                        {
-                            pickupItemRigidbody.useGravity = true;
-                            hitItem.transform.SetParent(null);
-
-                            ThrowObject(pickupItemRigidbody);
-                        }
+                        if (_pickedObject == null)
+                            PickupObject(hitItem.gameObject, pickupItemRigidbody);
                     }
                 }
 
@@ -58,11 +47,45 @@ namespace PlayerSystem
                 if (Input.GetKeyDown(KeyCode.E))
                     hitItem.Execute(_playerEntityController);
             }
+            
+            if (_isPickupEnable)
+            {
+                if (_pickedObject != null)
+                {
+                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                        ThrowObject(_pickedObject,
+                            _pickedObject.GetComponent<Rigidbody>());
+                }
+            }
+
+            
         }
 
-        private void ThrowObject(Rigidbody pickupItemRigidbody)
+        private void PickupObject(GameObject hitItemGameObject, Rigidbody pickupItemRigidbody)
         {
-            pickupItemRigidbody.AddForce(Vector3.one, ForceMode.Impulse);
+            pickupItemRigidbody.useGravity = false;
+            pickupItemRigidbody.isKinematic = true;
+
+            var hitItemTransform = hitItemGameObject.transform;
+            hitItemTransform.SetParent(holdObjectTransform);
+            hitItemTransform.localPosition = Vector3.zero;
+            hitItemGameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
+
+            _pickedObject = hitItemGameObject.gameObject;
+        }
+
+        private void ThrowObject(GameObject hitItemGameObject, Rigidbody pickupItemRigidbody)
+        {
+            hitItemGameObject.transform.SetParent(null);
+            hitItemGameObject.transform.rotation = Quaternion.Euler(Vector3.up);
+
+            hitItemGameObject.gameObject.AddComponent<DisablePhysicOnGroundHit>();
+
+            Debug.LogError("ThrowObject");
+            pickupItemRigidbody.isKinematic = false;
+            pickupItemRigidbody.useGravity = true;
+            pickupItemRigidbody.AddForce(transform.forward * 2, ForceMode.Impulse);
+            _pickedObject = null;
         }
 
         private void HideOption()

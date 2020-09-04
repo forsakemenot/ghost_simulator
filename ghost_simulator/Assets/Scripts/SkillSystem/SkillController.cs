@@ -40,6 +40,7 @@ namespace SkillSystem
                         _rayCaster.EnablePickup();
                         break;
                     case SkillType.SelfReveal :
+                        
                         break;
                     
                     default:
