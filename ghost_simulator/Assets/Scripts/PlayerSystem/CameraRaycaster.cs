@@ -22,7 +22,6 @@ namespace PlayerSystem
 
         private void FixedUpdate()
         {
-
             if (Physics.Raycast(transform.position, transform.forward, out var rayCastHit, 10))
             {
                 var hitItem = rayCastHit.transform.GetComponent<ItemInteraction>();
@@ -33,32 +32,36 @@ namespace PlayerSystem
                 }
 
                 if (_isPickupEnable)
-                {
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
-                    {
-                        var pickupItemRigidbody = hitItem.GetComponent<Rigidbody>();
-                        if (_pickedObject == null)
-                            PickupObject(hitItem.gameObject, pickupItemRigidbody);
-                    }
-                }
+                    if (HandlePickUpObject(hitItem))
+                        return;
 
                 if (!_isInteractionEnable) return;
                 ShowDisplayOption(hitItem);
                 if (Input.GetKeyDown(KeyCode.E))
                     hitItem.Execute(_playerEntityController);
-            }
-            
-            if (_isPickupEnable)
+            } 
+        }
+
+        private bool HandlePickUpObject(ItemInteraction hitItem)
+        {
+            if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-                if (_pickedObject != null)
+                var pickupItemRigidbody = hitItem.GetComponent<Rigidbody>();
+                if (_pickedObject == null)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
-                        ThrowObject(_pickedObject,
-                            _pickedObject.GetComponent<Rigidbody>());
+                    PickupObject(hitItem.gameObject, pickupItemRigidbody);
+                    return true;
                 }
             }
 
-            
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                ThrowObject(_pickedObject,
+                    _pickedObject.GetComponent<Rigidbody>());
+                return true;
+            }
+
+            return false;
         }
 
         private void PickupObject(GameObject hitItemGameObject, Rigidbody pickupItemRigidbody)
@@ -81,7 +84,6 @@ namespace PlayerSystem
 
             hitItemGameObject.gameObject.AddComponent<DisablePhysicOnGroundHit>();
 
-            Debug.LogError("ThrowObject");
             pickupItemRigidbody.isKinematic = false;
             pickupItemRigidbody.useGravity = true;
             pickupItemRigidbody.AddForce(transform.forward * 2, ForceMode.Impulse);
@@ -109,13 +111,11 @@ namespace PlayerSystem
         public void EnableInteraction()
         {
             _isInteractionEnable = true;
-            Debug.LogError("interaction Enabled");
         }
 
         public void EnablePickup()
         {
             _isPickupEnable = true;
-            Debug.LogError("Pickup Enabled");
         }
     }
 }
