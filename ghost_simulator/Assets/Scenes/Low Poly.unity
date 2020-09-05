@@ -5525,8 +5525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7a36afe95f6934a8b492e5e4103c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
   DetectionDistance: 20
+  currentState: 0
 --- !u!4 &1009823133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 19b4e6647ab8d7b45903a51d8f8f8908,
@@ -6331,8 +6331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7a36afe95f6934a8b492e5e4103c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
   DetectionDistance: 20
+  currentState: 0
 --- !u!4 &1197850171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1434860436305242090, guid: f36018e5549cd06409109c3c83a3b686,
@@ -14193,7 +14193,7 @@ PrefabInstance:
     - target: {fileID: 5843410313841037428, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
         type: 3}
       propertyPath: Type
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5843410313841037428, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
         type: 3}

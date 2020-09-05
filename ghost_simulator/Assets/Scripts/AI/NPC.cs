@@ -71,12 +71,28 @@ public class NPC : MonoBehaviour
                 break;
 
             case AIState.Scared:
-                RoamingToIdle(true); // temp for shock state
+                RoamingToScared(); // temp for shock state
                 break;
 
             default:
                 Debug.Log("AI : unknown state for " + gameObject.name);
                 break;
+        }
+
+        // debug
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            RoamingToScared();
+        }
+        else if(Input.GetKeyDown(KeyCode.M))
+        {
+            state = AIState.Suspicious;
+            anim.SetTrigger("ScaredToDeath");
+        }
+        else if (Input.GetKeyDown(KeyCode.N))
+        {
+            state = AIState.Idle;
+            anim.SetTrigger("Idle");
         }
     }
 
@@ -86,9 +102,15 @@ public class NPC : MonoBehaviour
         StartRoaming();
     }
 
-    private void RoamingToIdle(bool scared)
+    private void RoamingToIdle()
     {
-        StartIdle(scared);
+        StartIdle(false);
+    }
+
+    private void RoamingToScared()
+    {
+        navAgent.SetDestination(transform.position);
+        StartIdle(true);
     }
 
     private void StartIdle(bool scared)
@@ -139,7 +161,7 @@ public class NPC : MonoBehaviour
                     currentDestId++;
                     //Debug.Log("Aggent stopped, next id : " + currentDestId);
 
-                    RoamingToIdle(false);
+                    RoamingToIdle();
                 }
             }
         }
@@ -201,7 +223,7 @@ public class NPC : MonoBehaviour
     private void ApplyFear(InteractableItem item)
     {
         Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
-        navAgent.SetDestination(transform.position);
+        
         //testMat.color = Color.blue;
         state = AIState.Scared;
     }
