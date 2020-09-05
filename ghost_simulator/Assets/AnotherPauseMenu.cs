@@ -18,18 +18,19 @@ public class AnotherPauseMenu : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{ 
-        //    if (isPause)
-        //    {
-        //        HideCursor();
-        //        Resume();
-        //    } else
-        //    {
-        //        ShowCursor();
-        //        Pause();
-        //    }
-        //}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPause)
+            {
+                HideCursor();
+                Resume();
+            }
+            else
+            {
+                ShowCursor();
+                Pause();
+            }
+        }
     }
 
     private void HideCursor()
