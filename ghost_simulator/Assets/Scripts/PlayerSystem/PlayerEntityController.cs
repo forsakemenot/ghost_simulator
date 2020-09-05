@@ -1,14 +1,16 @@
-﻿using ScoreSystem;
+﻿using GameStateSystem;
+using ScoreSystem;
 using SkillSystem;
 using StaminaSystem;
 using TimerSystem;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace PlayerSystem
 {
     public class PlayerEntityController : MonoBehaviour
     {
+        private GameStateController _gameStateController;
+        
         private StaminaController _staminaController;
         private TimerController _timer;
         private ScoreController _scoreController;
@@ -25,6 +27,8 @@ namespace PlayerSystem
             
             _timer = GetComponent<TimerController>();
             _timer.StartTimer();
+
+            _gameStateController = FindObjectOfType<GameStateController>();
             HandleSkillUnlockCheck();
         }
 
@@ -76,8 +80,7 @@ namespace PlayerSystem
 
         private void GameOver()
         {
-            Debug.LogError("Reload Scene");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            _gameStateController.GameOver();
         }
 
         private void AddToScore(float change)
