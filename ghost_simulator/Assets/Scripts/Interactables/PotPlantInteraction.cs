@@ -7,11 +7,12 @@ namespace Interactables
     {
         private  Rigidbody _rigidbody;
     
-    
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             _rigidbody = GetComponent<Rigidbody>();
-            interactionName = "KickOver";
+            //interactionName = "KickOver";
             staminaCost = 10;
         }
 
@@ -20,6 +21,8 @@ namespace Interactables
         {
             playerEntityController.DeductStamina(staminaCost);
             _rigidbody.AddForce(-transform.forward*3, ForceMode.Impulse);
+
+            base.Execute(playerEntityController);
         }
     }
 }

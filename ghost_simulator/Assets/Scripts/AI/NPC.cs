@@ -93,7 +93,7 @@ public class NPC : MonoBehaviour
 
     private void StartIdle()
     {
-        Debug.Log("Start Idle");
+        //Debug.Log("Start Idle");
         state = AIState.Idle;
         idleStartTime = Time.time;
         anim.SetTrigger("IdleStart");
@@ -101,7 +101,7 @@ public class NPC : MonoBehaviour
 
     private void StartRoaming()
     {
-        Debug.Log("Start Walk");
+        //Debug.Log("Start Walk");
         state = AIState.Roaming;
         SetNextRoamingDestination();
         anim.SetTrigger("WalkStart");

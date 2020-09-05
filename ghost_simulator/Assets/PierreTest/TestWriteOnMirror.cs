@@ -31,9 +31,4 @@ public class TestWriteOnMirror : ItemInteraction
         Debug.Log("Mouse clicked " + name);
         Execute(null);
     }
-
-    public void OnApplicationQuit()
-    {
-        testMat.color = Color.gray;
-    }
 }

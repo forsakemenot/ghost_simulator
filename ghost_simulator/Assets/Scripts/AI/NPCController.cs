@@ -25,7 +25,7 @@ public class NPCController : MonoBehaviour
 
     public static void TestNPCsReaction(InteractableItem item) // Check if item is seen by NPCs now
     {
-        Debug.Log("Check NPCs for item : " + item);
+        //Debug.Log("Check NPCs for item : " + item);
 
         foreach (NPC npc in npcs)
         {
