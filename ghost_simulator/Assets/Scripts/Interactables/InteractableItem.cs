@@ -13,9 +13,11 @@ namespace Interactables
 
     public class InteractableItem : MonoBehaviour
     {
-        public ItemState currentState; 
         public float DetectionDistance;
         public float FearValue { get; set; }
+
+        [Header("Debug")]
+        public ItemState currentState;
 
         public void ApplyInteractionValues(ItemState state, float fear, float detectionDistance = -1)
         {

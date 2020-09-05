@@ -11,7 +11,7 @@ public enum AIState
     Idle,
     Suspicious,
     Roaming,
-    Shocked,
+    Scared,
 }
 
 public class NPC : MonoBehaviour
@@ -36,7 +36,7 @@ public class NPC : MonoBehaviour
 
     public Vector3 EyesPosition { get { return transform.position + new Vector3(0, navAgent.height / 2.0f, 0); } }
 
-    public bool IsAvailableForSightCheck { get{ return state != AIState.Shocked; } }
+    public bool IsAvailableForSightCheck { get{ return state != AIState.Scared; } }
 
     // Start is called before the first frame update
     void Start()
@@ -70,8 +70,8 @@ public class NPC : MonoBehaviour
                 // check suspicion source reached
                 break;
 
-            case AIState.Shocked:
-                RoamingToIdle(); // temp for shock state
+            case AIState.Scared:
+                RoamingToIdle(true); // temp for shock state
                 break;
 
             default:
@@ -86,17 +86,21 @@ public class NPC : MonoBehaviour
         StartRoaming();
     }
 
-    private void RoamingToIdle()
+    private void RoamingToIdle(bool scared)
     {
-        StartIdle();
+        StartIdle(scared);
     }
 
-    private void StartIdle()
+    private void StartIdle(bool scared)
     {
         //Debug.Log("Start Idle");
         state = AIState.Idle;
         idleStartTime = Time.time;
-        anim.SetTrigger("IdleStart");
+
+        if(scared)
+            anim.SetTrigger("Scared");
+        else
+            anim.SetTrigger("IdleStart");
     }
 
     private void StartRoaming()
@@ -135,7 +139,7 @@ public class NPC : MonoBehaviour
                     currentDestId++;
                     //Debug.Log("Aggent stopped, next id : " + currentDestId);
 
-                    RoamingToIdle();
+                    RoamingToIdle(false);
                 }
             }
         }
@@ -199,6 +203,6 @@ public class NPC : MonoBehaviour
         Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
         navAgent.SetDestination(transform.position);
         //testMat.color = Color.blue;
-        state = AIState.Shocked;
+        state = AIState.Scared;
     }
 }

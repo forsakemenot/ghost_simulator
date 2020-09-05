@@ -6297,6 +6297,42 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1178032266}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1178634718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 0c8436dae463c9a4e9bd5e06e8372459,
+    type: 3}
+  m_PrefabInstance: {fileID: 1958481314}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1178634721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178634718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89638973fde9f504599955ae9ef28ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionName: KickOver
+  staminaCost: 10
+  FearValue: 20
+  Type: 1
+--- !u!114 &1178634722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178634718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7a36afe95f6934a8b492e5e4103c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  DetectionDistance: 20
 --- !u!4 &1197850171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1434860436305242090, guid: f36018e5549cd06409109c3c83a3b686,
