@@ -56,6 +56,7 @@ namespace PlayerSystem
 
             if (Input.GetKeyUp(KeyCode.Mouse1))
             {
+                if (_pickedObject == null) return false;
                 ThrowObject(_pickedObject,
                     _pickedObject.GetComponent<Rigidbody>());
                 return true;

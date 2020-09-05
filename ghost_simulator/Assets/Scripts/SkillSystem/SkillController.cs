@@ -11,7 +11,7 @@ namespace SkillSystem
         private CameraRaycaster _rayCaster;
 
 
-        private void Start()
+        private void OnEnable()
         {
             _rayCaster = FindObjectOfType<CameraRaycaster>();
         }
