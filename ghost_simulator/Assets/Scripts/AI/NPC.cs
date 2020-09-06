@@ -30,6 +30,7 @@ public class NPC : MonoBehaviour
     private NavMeshAgent navAgent;
     private float idleStartTime;
     private Animator anim;
+    private NPCController npcController;
 
     public List<InteractableItem> ScaryItems { get; set; } = new List<InteractableItem>();  // When the player interact with an item add it to the list of item AI should react to ?
                                                                                             // then remove them from the list once the AI has reacted to it
@@ -44,6 +45,7 @@ public class NPC : MonoBehaviour
         //testMat.color = Color.white;
         navAgent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        npcController = GetComponentInParent<NPCController>(); // ugly referencing
 
         state = AIState.Roaming;
         SetNextRoamingDestination();
@@ -223,7 +225,7 @@ public class NPC : MonoBehaviour
     private void ApplyFear(InteractableItem item)
     {
         Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
-        
+        npcController.AddToScore(item.FearValue);
         //testMat.color = Color.blue;
         state = AIState.Scared;
     }

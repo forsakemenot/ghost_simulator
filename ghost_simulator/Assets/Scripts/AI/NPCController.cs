@@ -7,6 +7,7 @@ using Interactables;
 public class NPCController : MonoBehaviour
 {
     private static NPC[] npcs;
+    public ScoreSystem.ScoreController scoreController;
 
     // Start is called before the first frame update
     void Start()
@@ -32,5 +33,10 @@ public class NPCController : MonoBehaviour
             if (npc.IsAvailableForSightCheck)
                 npc.TryReactToItem(item);
         }
+    }
+
+    public void AddToScore(int score)
+    {
+        scoreController.AddToScore(score);
     }
 }

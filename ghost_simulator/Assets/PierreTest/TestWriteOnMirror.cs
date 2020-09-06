@@ -7,12 +7,9 @@ using UnityEngine;
 public class TestWriteOnMirror : ItemInteraction
 {
     public Material testMat;
-    private InteractableItem item;
-
-    public float FearValue;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         item = GetComponent<InteractableItem>();
     }
