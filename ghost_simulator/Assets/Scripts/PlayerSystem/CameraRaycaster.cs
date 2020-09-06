@@ -50,6 +50,9 @@ namespace PlayerSystem
                 if (_pickedObject == null)
                 {
                     PickupObject(hitItem.gameObject, pickupItemRigidbody);
+
+                    _pickedObject.GetComponent<PickUpInteraction>()?.Execute(_playerEntityController);
+
                     return true;
                 }
             }
@@ -57,8 +60,12 @@ namespace PlayerSystem
             if (Input.GetKeyUp(KeyCode.Mouse1))
             {
                 if (_pickedObject == null) return false;
+
+                _pickedObject.GetComponent<ThrowInteraction>()?.Execute(_playerEntityController);
+
                 ThrowObject(_pickedObject,
                     _pickedObject.GetComponent<Rigidbody>());
+
                 return true;
             }
 

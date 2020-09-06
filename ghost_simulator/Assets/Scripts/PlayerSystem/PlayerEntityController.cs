@@ -13,6 +13,7 @@ namespace PlayerSystem
         private TimerController _timer;
         private ScoreController _scoreController;
         private SkillController _skillController;
+        private NPCController _npcController;
 
         private void Start()
         {
@@ -22,7 +23,10 @@ namespace PlayerSystem
             _scoreController.ResetScore();
 
             _skillController = FindObjectOfType<SkillController>();
-            
+
+            _npcController = FindObjectOfType<NPCController>();
+            _npcController.OnNPCScared += HandleNPCScared; // Would need a registration, but...
+
             _timer = GetComponent<TimerController>();
             _timer.StartTimer();
             HandleSkillUnlockCheck();
@@ -44,26 +48,23 @@ namespace PlayerSystem
         {
             HandleTimerCheck();
 
-            HandleAddToScore();
-
-        }
-
-
-        private void HandleAddToScore()
-        {
-            //TODO:: Please add to score from enemy spooked event or something;
+            // cheat code
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 AddToScore(100);
                 HandleSkillUnlockCheck();
             }
+        }
 
 
+        private void HandleNPCScared(float score)
+        {
+            AddToScore(score);
+            HandleSkillUnlockCheck();
         }
 
         private void HandleSkillUnlockCheck()
         {
-            
             //TODO:: Handle Skill threshold here
             _skillController.CheckIfSkillUnlocked(_scoreController.GetCurrentScore());
         }

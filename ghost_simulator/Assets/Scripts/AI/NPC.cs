@@ -225,7 +225,7 @@ public class NPC : MonoBehaviour
     private void ApplyFear(InteractableItem item)
     {
         Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
-        npcController.AddToScore(item.FearValue);
+        npcController.NPCScared(item.FearValue);
         //testMat.color = Color.blue;
         state = AIState.Scared;
     }

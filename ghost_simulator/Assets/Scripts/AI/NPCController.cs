@@ -6,8 +6,9 @@ using Interactables;
 
 public class NPCController : MonoBehaviour
 {
+    public event Action<float> OnNPCScared;
+
     private static NPC[] npcs;
-    public ScoreSystem.ScoreController scoreController;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +36,8 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    public void AddToScore(int score)
+    public void NPCScared(float score)
     {
-        scoreController.AddToScore(score);
+        OnNPCScared?.Invoke(score);
     }
 }
