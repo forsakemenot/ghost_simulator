@@ -29,8 +29,10 @@ namespace UISystem
         private void ReloadGame()
         {
             //TODO:: Reload then continue next session
-            //TOOO:: SAVE DATA!! 
-            _gameStateController.ReloadGameplaySession();
+            //TOOO:: SAVE DATA!!
+               
+            
+            _gameStateController.ReloadGamePlaySession();
         }
     }
 }

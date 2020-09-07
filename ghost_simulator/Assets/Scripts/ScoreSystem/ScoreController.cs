@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CurrencySystem;
+using UnityEngine;
 
 namespace ScoreSystem
 {
@@ -16,7 +17,9 @@ namespace ScoreSystem
         public void AddToScore(float change)
         {
             _currentScore += change;
+            CurrencyController.Instance.AddToCurrency(change); 
             _scoreDisplay.UpdateScoreDisplay(_currentScore);
+            
         }
 
         public void ResetScore()
