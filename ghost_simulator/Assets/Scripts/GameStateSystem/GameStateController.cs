@@ -1,5 +1,4 @@
-﻿using System.IO;
-using PlayerSystem;
+﻿using PlayerSystem;
 using UISystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +19,8 @@ namespace GameStateSystem
              _uiPanelController = FindObjectOfType<UiPanelController>();
              _firstPersonController = FindObjectOfType<FirstPersonController>();
              _anotherPauseMenu = FindObjectOfType<AnotherPauseMenu>();
+             
+             
          }
 
 
@@ -28,7 +29,11 @@ namespace GameStateSystem
             _firstPersonController.IsPause = true;
             _uiPanelController.ShowSkillTree();
             _anotherPauseMenu.IsGameOver = true;
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+         }
+
+        public void ReloadGameplaySession()
+        {
+             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
