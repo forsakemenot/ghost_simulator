@@ -7,29 +7,29 @@ public class AnotherPauseMenu : MonoBehaviour
 {
     public static bool isPause = false;
     public GameObject pauseMenuUI;
-
     private FirstPersonController firstPersonController;
+    public bool IsGameOver;
 
     private void Start()
     {
         firstPersonController = (FirstPersonController)FindObjectOfType(typeof(FirstPersonController));
+        IsGameOver = false;
     }
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (IsGameOver) return;
+      
+        if (!Input.GetKeyDown(KeyCode.Escape)) return;
+        if (isPause)
         {
-            if (isPause)
-            {
-                HideCursor();
-                Resume();
-            }
-            else
-            {
-                ShowCursor();
-                Pause();
-            }
+            HideCursor();
+            Resume();
+        } else
+        {
+            ShowCursor();
+            Pause();
         }
     }
 

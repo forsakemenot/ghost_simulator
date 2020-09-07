@@ -47,6 +47,7 @@ namespace PlayerSystem
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 var pickupItemRigidbody = hitItem.GetComponent<Rigidbody>();
+                if (pickupItemRigidbody == null) return false;
                 if (_pickedObject == null)
                 {
                     PickupObject(hitItem.gameObject, pickupItemRigidbody);
