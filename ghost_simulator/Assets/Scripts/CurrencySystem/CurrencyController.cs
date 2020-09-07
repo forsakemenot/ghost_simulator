@@ -29,11 +29,10 @@ namespace CurrencySystem
         
         private void Awake()
         {
-            // if the singleton hasn't been initialized yet
             if (_instance != null && _instance != this)
             {
                 Destroy(this.gameObject);
-                return;//Avoid doing anything else
+                return;
             }
      
             _instance = this;
@@ -43,7 +42,12 @@ namespace CurrencySystem
         public void AddToCurrency(float change)
         {
             _currentCurrency += change;
-            Debug.LogError( "CurrentCu : "+_currentCurrency);
         }
+
+        public float GetCurrentCurrency()
+        {
+            return _currentCurrency;
+        }
+        
     }
 }
