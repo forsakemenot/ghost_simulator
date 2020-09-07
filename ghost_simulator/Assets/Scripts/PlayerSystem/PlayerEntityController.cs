@@ -80,7 +80,7 @@ namespace PlayerSystem
 
         private void GameOver()
         {
-            _gameStateController.GameOver();
+            _gameStateController.GamePlaySessionOver();
         }
 
         private void AddToScore(float change)

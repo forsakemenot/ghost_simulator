@@ -1,22 +1,33 @@
-﻿using UISystem;
+﻿using System.IO;
+using PlayerSystem;
+using UISystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 namespace GameStateSystem
 {
     public class GameStateController : MonoBehaviour
     {
          private UiPanelController _uiPanelController;
-
+         private CameraRaycaster _raycaster;
+         private FirstPersonController _firstPersonController;
+         private AnotherPauseMenu _anotherPauseMenu; 
+         
+         
          private void Start()
          {
              _uiPanelController = FindObjectOfType<UiPanelController>();
+             _firstPersonController = FindObjectOfType<FirstPersonController>();
+             _anotherPauseMenu = FindObjectOfType<AnotherPauseMenu>();
          }
 
 
-        public void GameOver()
+        public void GamePlaySessionOver()
         {
-            _uiPanelController.ShowSkillTree();  
+            _firstPersonController.IsPause = true;
+            _uiPanelController.ShowSkillTree();
+            _anotherPauseMenu.IsGameOver = true;
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
