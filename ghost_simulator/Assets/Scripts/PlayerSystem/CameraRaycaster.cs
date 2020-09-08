@@ -35,10 +35,14 @@ namespace PlayerSystem
                     if (HandlePickUpObject(hitItem))
                         return;
 
-                if (!_isInteractionEnable) return;
+                if (!_isInteractionEnable || hitItem.CheckLimitedUse()) return;
+
                 ShowDisplayOption(hitItem);
                 if (Input.GetKeyDown(KeyCode.E))
+                {
                     hitItem.Execute(_playerEntityController);
+                    HideOption();
+                }
             } 
         }
 

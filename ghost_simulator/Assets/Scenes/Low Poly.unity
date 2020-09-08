@@ -398,7 +398,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh47480
+  m_Name: pb_Mesh19480
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -561,7 +561,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh47478
+  m_Name: pb_Mesh19478
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1435,6 +1435,76 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8f568d2330fd6a44b9007af8d0d0331e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 788dae44ebdcf0945a2352f24e858fe4, type: 3}
+--- !u!1 &345744199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: f0acec595f5f77b479b28844d040f308,
+    type: 3}
+  m_PrefabInstance: {fileID: 834654851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &345744200
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345744199}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5dfd6db28a1bc14ca026dcf43e183e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &345744201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345744199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a12a618fe2e72d4891d96b2afebe173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyOnce: 1
+  interactionName: Open Fridge
+  staminaCost: 10
+  FearValue: 20
+  Type: 2
+  Trigger: FridgeOpen
+--- !u!114 &345744204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345744199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7a36afe95f6934a8b492e5e4103c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetectionDistance: 10
+  currentState: 0
+--- !u!65 &345744205
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345744199}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.93400264, y: 2.1533504, z: 0.7005041}
+  m_Center: {x: 0, y: 1.0766752, z: 0}
 --- !u!1 &350695343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,7 +2711,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh47178
+  m_Name: pb_Mesh19104
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4606,7 +4676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f0acec595f5f77b479b28844d040f308, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3686001
+      value: -1.3686
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f0acec595f5f77b479b28844d040f308, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4642,6 +4712,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f0acec595f5f77b479b28844d040f308, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f0acec595f5f77b479b28844d040f308, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f0acec595f5f77b479b28844d040f308, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f0acec595f5f77b479b28844d040f308, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f0acec595f5f77b479b28844d040f308, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: f0acec595f5f77b479b28844d040f308, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: f0acec595f5f77b479b28844d040f308, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: f0acec595f5f77b479b28844d040f308, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: f0acec595f5f77b479b28844d040f308, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: f0acec595f5f77b479b28844d040f308, type: 3}
@@ -5525,6 +5627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d047a88f70181041935515d6ccbb9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnlyOnce: 0
   interactionName: 
   staminaCost: 10
   FearValue: 35
@@ -5541,6 +5644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605df6b2863dbe24499492c6068ea165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnlyOnce: 0
   interactionName: 
   staminaCost: 15
   FearValue: 20
@@ -6347,6 +6451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89638973fde9f504599955ae9ef28ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnlyOnce: 0
   interactionName: KickOver
   staminaCost: 10
   FearValue: 20
@@ -6906,7 +7011,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-11166
+  m_Name: pb_Mesh-2016
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7928,6 +8033,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0bf7294cedd0f34e8a32a4292903641, type: 3}
+--- !u!1 &1697500959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 25ba1181f1e6bfb4f822afbeddebfee3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1226014483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1697500960 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 25ba1181f1e6bfb4f822afbeddebfee3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1226014483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1697500961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697500959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7a36afe95f6934a8b492e5e4103c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetectionDistance: 10
+  currentState: 0
+--- !u!114 &1697500962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697500959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba205be8bbd0c0449a11e4c39a2eb99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyOnce: 1
+  interactionName: Change Picture
+  staminaCost: 10
+  FearValue: 35
+  Type: 2
+  TargetRenderer: {fileID: 1697500960}
+  NewMaterial: {fileID: 2100000, guid: ffd68f6e0f3817348aed329a1d8ddc23, type: 2}
+--- !u!65 &1697500963
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697500959}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.84824383, y: 0.6360694, z: 0.15402168}
+  m_Center: {x: -0.000000014901161, y: 0.3180347, z: 0.0026584156}
 --- !u!1 &1699263884
 GameObject:
   m_ObjectHideFlags: 0
