@@ -12,12 +12,14 @@ namespace Interactables
 {
     public class ItemInteraction : MonoBehaviour
     {
+        public bool OnlyOnce = true;
         public string interactionName;
         public float staminaCost;
         public int FearValue;
         public InteractionType Type;
 
         protected InteractableItem item;
+        protected bool alreadyUsed;
 
 
         protected virtual void Start()
@@ -45,8 +47,15 @@ namespace Interactables
 
                 default:
                     Debug.LogError("State " + Type + " is not handled !");
-                    break;
+                    return;
             }
+
+            alreadyUsed = true;
+        }
+
+        public bool CheckLimitedUse()
+        {
+            return OnlyOnce && alreadyUsed;
         }
     }
 }
