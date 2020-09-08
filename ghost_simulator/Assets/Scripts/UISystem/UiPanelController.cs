@@ -1,4 +1,5 @@
-﻿using GameStateSystem;
+﻿using CurrencySystem;
+using GameStateSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,14 +25,14 @@ namespace UISystem
         {
             continueButton.onClick.AddListener(ReloadGame);
             skillTreeCanvasObject.SetActive(true);
+
+            var _currentCurrency =CurrencyController.Instance.GetCurrentCurrency();
+            
+            
         }
 
         private void ReloadGame()
-        {
-            //TODO:: Reload then continue next session
-            //TOOO:: SAVE DATA!!
-               
-            
+        {     
             _gameStateController.ReloadGamePlaySession();
         }
     }

@@ -19,7 +19,7 @@ namespace GameStateSystem
              _firstPersonController = FindObjectOfType<FirstPersonController>();
              _anotherPauseMenu = FindObjectOfType<AnotherPauseMenu>();
              _scoreController = FindObjectOfType<ScoreController>();
-             PlayerPrefs.DeleteKey("TempCurrency");
+             
          }
 
 
@@ -28,7 +28,6 @@ namespace GameStateSystem
              _firstPersonController.IsPause = true;
              _uiPanelController.ShowSkillTree();
              _anotherPauseMenu.IsGameOver = true;
-             PlayerPrefs.SetFloat("TempCurrency", _scoreController.GetCurrentScore());
          }
 
         public void ReloadGamePlaySession()

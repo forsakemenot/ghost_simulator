@@ -15,6 +15,7 @@ namespace PlayerSystem
         private TimerController _timer;
         private ScoreController _scoreController;
         private SkillController _skillController;
+        private bool _isGameOver;
 
         private void Start()
         {
@@ -80,7 +81,10 @@ namespace PlayerSystem
 
         private void GameOver()
         {
+            if (_isGameOver) return;
+            
             _gameStateController.GamePlaySessionOver();
+            _isGameOver = true;
         }
 
         private void AddToScore(float change)
