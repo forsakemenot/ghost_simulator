@@ -110,7 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e080a7ee8658ad43927b50117de3edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnlyOnce: 0
   interactionName: 
+  staminaCost: 0
+  FearValue: 0
+  Type: 0
   _strength: 1
 --- !u!65 &7923893505987311338
 BoxCollider:

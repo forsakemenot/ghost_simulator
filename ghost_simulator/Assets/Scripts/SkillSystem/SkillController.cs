@@ -12,8 +12,6 @@ namespace SkillSystem
         private CameraRaycaster _rayCaster;
 
         private float _currentSkillCurrency; 
-        
-        
 
         private void OnEnable()
         {
@@ -31,7 +29,7 @@ namespace SkillSystem
             
             var unlockedSkill = new List<SkillData>();
             foreach (var skillData in skillList)
-                if (skillData.scoreToUnlock < currentScore)
+                if (skillData.scoreToUnlock < _currentSkillCurrency)
                     unlockedSkill.Add(skillData);
 
             UpdateInteractionAbility(unlockedSkill);
@@ -57,6 +55,11 @@ namespace SkillSystem
                         throw new ArgumentOutOfRangeException();
                 }
             }    
+        }
+
+        public List<SkillData> GetSkillData()
+        {
+            return skillList;
         }
     }
 }

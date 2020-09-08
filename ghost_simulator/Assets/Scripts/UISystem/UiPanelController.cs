@@ -25,9 +25,8 @@ namespace UISystem
         {
             continueButton.onClick.AddListener(ReloadGame);
             skillTreeCanvasObject.SetActive(true);
-
-            var _currentCurrency =CurrencyController.Instance.GetCurrentCurrency();
-            
+             skillTreeCanvasObject.GetComponent<SkillDisplayController>().Initialize();
+                        
             
         }
 

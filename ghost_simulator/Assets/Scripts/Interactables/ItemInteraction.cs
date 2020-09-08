@@ -12,7 +12,7 @@ namespace Interactables
 {
     public class ItemInteraction : MonoBehaviour
     {
-        public bool OnlyOnce = true;
+        public bool OnlyOnce = false;
         public string interactionName;
         public float staminaCost;
         public int FearValue;
