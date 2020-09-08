@@ -1,4 +1,5 @@
-﻿using GameStateSystem;
+﻿using System;
+using GameStateSystem;
 using ScoreSystem;
 using SkillSystem;
 using StaminaSystem;
@@ -28,13 +29,23 @@ namespace PlayerSystem
             _skillController = FindObjectOfType<SkillController>();
 
             _npcController = FindObjectOfType<NPCController>();
+
             _npcController.OnNPCScared += HandleNPCScared; // Would need a registration, but...
 
             _timer = GetComponent<TimerController>();
             _timer.StartTimer();
 
             _gameStateController = FindObjectOfType<GameStateController>();
-            HandleSkillUnlockCheck();
+        }
+
+        private void OnDestroy()
+        {
+            _npcController.OnNPCScared -= HandleNPCScared;
+        }
+
+        private void OnDisable()
+        {
+            _npcController.OnNPCScared -= HandleNPCScared;
         }
 
         public void DeductStamina(float changes)
@@ -57,7 +68,7 @@ namespace PlayerSystem
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 AddToScore(100);
-                HandleSkillUnlockCheck();
+                HandleSkillUnlockCheck(100);
             }
         }
 
@@ -65,13 +76,13 @@ namespace PlayerSystem
         private void HandleNPCScared(float score)
         {
             AddToScore(score);
-            HandleSkillUnlockCheck();
+            HandleSkillUnlockCheck(score);
         }
 
-        private void HandleSkillUnlockCheck()
+        private void HandleSkillUnlockCheck(float score=0)
         {
             //TODO:: Handle Skill threshold here
-            _skillController.CheckIfSkillUnlocked(_scoreController.GetCurrentScore());
+            _skillController.CheckIfSkillUnlocked(score);
         }
 
         private void HandleTimerCheck()

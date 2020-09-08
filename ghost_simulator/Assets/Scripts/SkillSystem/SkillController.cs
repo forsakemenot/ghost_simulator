@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CurrencySystem;
 using PlayerSystem;
 using UnityEngine;
 
@@ -10,15 +11,24 @@ namespace SkillSystem
         [SerializeField] private List<SkillData> skillList = new List<SkillData>();
         private CameraRaycaster _rayCaster;
 
+        private float _currentSkillCurrency; 
+        
+        
 
         private void OnEnable()
         {
             _rayCaster = FindObjectOfType<CameraRaycaster>();
+
+            _currentSkillCurrency = 0;
+            var previousRunCurrency= CurrencyController.Instance.GetCurrentCurrency(); 
+            CheckIfSkillUnlocked(previousRunCurrency);
         }
 
 
         public void CheckIfSkillUnlocked(float currentScore)
         {
+            _currentSkillCurrency += currentScore;
+            
             var unlockedSkill = new List<SkillData>();
             foreach (var skillData in skillList)
                 if (skillData.scoreToUnlock < currentScore)

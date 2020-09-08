@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 29e3e88704154c34cabee4a176862951
+  m_OcclusionCullingData: {fileID: 36300000, guid: 566edf6560b3c5446938db7dd3c960a4,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -6455,8 +6456,8 @@ MonoBehaviour:
   OnlyOnce: 0
   interactionName: KickOver
   staminaCost: 10
-  FearValue: 20
-  Type: 1
+  FearValue: 0
+  Type: 0
 --- !u!114 &1178634722
 MonoBehaviour:
   m_ObjectHideFlags: 0
