@@ -16,8 +16,17 @@ namespace Interactables
         public float DetectionDistance;
         public float FearValue { get; set; }
 
+        public ItemInteraction LastRevertableInteraction;
+
         [Header("Debug")]
         public ItemState currentState;
+
+        private Vector3 basePosition;
+
+        private void Start()
+        {
+            basePosition = transform.position;
+        }
 
         public void ApplyInteractionValues(ItemState state, float fear, float detectionDistance = -1)
         {
@@ -32,6 +41,13 @@ namespace Interactables
         {
             currentState = ItemState.Normal;
             FearValue = 0;
+        }
+
+        public void ResetPosition()
+        {
+            Debug.LogError("OK CALLING");
+            transform.position = basePosition;
+            transform.eulerAngles = Vector3.zero;
         }
     }
 }

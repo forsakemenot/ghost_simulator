@@ -18,6 +18,9 @@ namespace Interactables
         public int FearValue;
         public InteractionType Type;
 
+
+        public virtual bool Revertable { get { return false; } }
+
         protected InteractableItem item;
         protected bool alreadyUsed;
 
@@ -51,11 +54,23 @@ namespace Interactables
             }
 
             alreadyUsed = true;
+
+            if(Revertable)
+                item.LastRevertableInteraction = this;
         }
 
         public bool CheckLimitedUse()
         {
             return OnlyOnce && alreadyUsed;
+        }
+
+        public virtual void Revert()
+        {
+            if(Revertable)
+            {
+                item.LastRevertableInteraction = null;
+                alreadyUsed = false;
+            }
         }
     }
 }

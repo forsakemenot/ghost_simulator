@@ -31,6 +31,7 @@ public class NPC : MonoBehaviour
     private float idleStartTime;
     private Animator anim;
     private NPCController npcController;
+    private InteractableItem itemToRevert;
 
     public List<InteractableItem> ScaryItems { get; set; } = new List<InteractableItem>();  // When the player interact with an item add it to the list of item AI should react to ?
                                                                                             // then remove them from the list once the AI has reacted to it
@@ -226,7 +227,18 @@ public class NPC : MonoBehaviour
     {
         Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
         npcController.NPCScared(item.FearValue);
-        //testMat.color = Color.blue;
         state = AIState.Scared;
+
+        if (item.LastRevertableInteraction != null)
+        {
+            itemToRevert = item;
+            Invoke("RevertItem", 1);
+        }
+            
+    }
+
+    private void RevertItem()
+    {
+        itemToRevert.LastRevertableInteraction.Revert();
     }
 }
