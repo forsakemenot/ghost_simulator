@@ -45,7 +45,6 @@ namespace Interactables
 
         public void ResetPosition()
         {
-            Debug.LogError("OK CALLING");
             transform.position = basePosition;
             transform.eulerAngles = Vector3.zero;
         }
