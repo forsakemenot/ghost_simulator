@@ -47,7 +47,10 @@ MonoBehaviour:
   - skillType: 0
     scoreToUnlock: -10
   - skillType: 1
-    scoreToUnlock: 990
+    scoreToUnlock: 200
   - skillType: 2
     scoreToUnlock: 2000
-  rayCaster: {fileID: 0}
+  - skillType: 3
+    scoreToUnlock: 900000
+  - skillType: 4
+    scoreToUnlock: 1e+9

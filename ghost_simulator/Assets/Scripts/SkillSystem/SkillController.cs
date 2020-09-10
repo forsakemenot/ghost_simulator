@@ -47,10 +47,12 @@ namespace SkillSystem
                     case SkillType.PickupObject:
                         _rayCaster.EnablePickup();
                         break;
-                    case SkillType.SelfReveal :
-                        
+                    case SkillType.DreamHaunt :
                         break;
-                    
+                    case SkillType.GhostShadow:
+                        break;
+                    case SkillType.Terror:
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

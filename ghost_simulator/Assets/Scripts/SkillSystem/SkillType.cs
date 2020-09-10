@@ -1,4 +1,4 @@
 ﻿public enum SkillType
 {
-    Interaction, PickupObject, SelfReveal
+    Interaction, PickupObject, DreamHaunt, GhostShadow, Terror
 }

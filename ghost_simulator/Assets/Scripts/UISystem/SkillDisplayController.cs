@@ -38,32 +38,93 @@ namespace UISystem
             
             
             var unlockedType = new List<SkillData>();
+            var lockedType = new List<SkillData>();
             foreach (var skillData in skillList)
                 if (skillData.scoreToUnlock < _currentCurrency)
                     unlockedType.Add(skillData);
+                else 
+                    lockedType.Add(skillData);
 
-            foreach (var skillData in unlockedType)
+            foreach (var skillData in unlockedType) EnableUnlockedObjectFromSkillData(skillData);
+
+            foreach (var skillData in lockedType)
             {
-                EnableObjectFromSkillData(skillData);
+                EnableLockedObjectFromSkillData(skillData);
             }
+
+
         }
 
-        private void EnableObjectFromSkillData(SkillData skillData)
+        private void EnableUnlockedObjectFromSkillData(SkillData skillData)
         {
+            CanvasGroup canvasGroup;
+            SkillEntryDisplayController entryDisplayController;
             switch (skillData.skillType)
             {
                 case SkillType.Interaction:
-                    skillLevel_1.SetActive(true);
+                    SetSkillVisualToUnlocked(skillLevel_1);
                     break;
                 case SkillType.PickupObject:
-                    skillLevel_2.SetActive(true);
+                    SetSkillVisualToUnlocked(skillLevel_2);
                     break;
-                case SkillType.SelfReveal:
-                    skillLevel_3.SetActive(true);
+                case SkillType.DreamHaunt:
+                    SetSkillVisualToUnlocked(skillLevel_3);
+                    break;
+                case SkillType.GhostShadow:
+                    SetSkillVisualToUnlocked(skillLevel_4);
+                    break;
+                case SkillType.Terror:
+                    SetSkillVisualToUnlocked(skillLevel_5);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private void SetSkillVisualToUnlocked(GameObject skillVisualObject)
+        {
+            var canvasGroup = skillVisualObject.GetComponent<CanvasGroup>();
+            canvasGroup.alpha = 0;
+            var entryDisplayController = skillVisualObject.GetComponentInChildren<SkillEntryDisplayController>();
+            entryDisplayController.SetUnlocked(true);
+            skillVisualObject.SetActive(true);
+            LeanTween.alphaCanvas(canvasGroup, 1, 1.3f).setEaseOutExpo();
+        }
+
+        private void EnableLockedObjectFromSkillData(SkillData skillData)
+        {
+            CanvasGroup canvasGroup;
+            SkillEntryDisplayController entryDisplayController;
+            switch (skillData.skillType)
+            {
+                case SkillType.Interaction:
+                    SetSkillVisualToLocked(skillLevel_1);
+                    break;
+                case SkillType.PickupObject:
+                    SetSkillVisualToLocked(skillLevel_2);
+                    break;
+                case SkillType.DreamHaunt:
+                    SetSkillVisualToLocked(skillLevel_3);
+                    break;
+                case SkillType.GhostShadow:
+                    SetSkillVisualToLocked(skillLevel_4);
+                    break;
+                case SkillType.Terror:
+                    SetSkillVisualToLocked(skillLevel_5);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void SetSkillVisualToLocked(GameObject skillVisualObject)
+        {
+            var canvasGroup = skillVisualObject.GetComponent<CanvasGroup>();
+            canvasGroup.alpha = 0;
+            var entryDisplayController = skillVisualObject.GetComponentInChildren<SkillEntryDisplayController>();
+            entryDisplayController.SetUnlocked(false);
+            skillVisualObject.SetActive(true);
+            LeanTween.alphaCanvas(canvasGroup, 1, 1.5f).setEaseOutExpo();
         }
     }
 }
