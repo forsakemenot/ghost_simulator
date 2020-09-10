@@ -123,4 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89638973fde9f504599955ae9ef28ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnlyOnce: 0
   interactionName: 
+  staminaCost: 0
+  FearValue: 0
+  Type: 0

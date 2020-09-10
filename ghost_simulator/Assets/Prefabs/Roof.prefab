@@ -324,7 +324,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed304ec4eef4534cbef19696f32e936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnlyOnce: 0
   interactionName: Turn On
+  staminaCost: 20
+  FearValue: 10
+  Type: 0
   lights:
   - {fileID: 0}
   - {fileID: 0}
