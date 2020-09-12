@@ -9,7 +9,8 @@ namespace Interactables
 
         private Rigidbody _rigidbody;
         [SerializeField] private float _strength = 1;
-
+        [SerializeField] private AudioClip sfxToPlayOnTrigger; 
+      
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -20,6 +21,7 @@ namespace Interactables
         public override void Execute(PlayerEntityController playerEntityController)
         {
             _rigidbody.AddForce(transform.forward * _strength, ForceMode.Impulse);      
+            base.PlaySfx(sfxToPlayOnTrigger);
         }
     }
 }

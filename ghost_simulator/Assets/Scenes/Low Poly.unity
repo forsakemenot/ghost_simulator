@@ -468,13 +468,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45666192}
   m_CullTransparentMesh: 0
---- !u!43 &64895435
+--- !u!43 &59125449
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26604
+  m_Name: pb_Mesh99672
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -637,7 +637,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26602
+  m_Name: pb_Mesh99670
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1550,11 +1550,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyOnce: 1
   interactionName: Open Fridge
-  staminaCost: 10
-  FearValue: 20
+  staminaCost: 5
+  FearValue: 25
   Type: 2
   Trigger: FridgeOpen
   ReverseTrigger: FridgeReverse
+  sfxToPlayOnTrigger: {fileID: 8300000, guid: bbec9b47f14b93341ba57e9aceb6842d, type: 3}
+  sfxToPlayOnRevert: {fileID: 8300000, guid: d9b148dd007f3384d8217a146bfbc439, type: 3}
 --- !u!114 &345744204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3610,7 +3612,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-18350
+  m_Name: pb_Mesh98794
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5741,61 +5743,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 834654851}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1000999212 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5842083646731976182, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
-    type: 3}
-  m_PrefabInstance: {fileID: 5843410314157299451}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1000999213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000999212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d047a88f70181041935515d6ccbb9ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyOnce: 0
-  interactionName: 
-  staminaCost: 10
-  FearValue: 35
-  Type: 2
---- !u!114 &1000999214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000999212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 605df6b2863dbe24499492c6068ea165, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyOnce: 0
-  interactionName: 
-  staminaCost: 15
-  FearValue: 20
-  Type: 2
---- !u!114 &1000999219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000999212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a7a36afe95f6934a8b492e5e4103c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DetectionDistance: 20
-  LastRevertableInteraction: {fileID: 0}
-  currentState: 0
 --- !u!4 &1009823133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 19b4e6647ab8d7b45903a51d8f8f8908,
@@ -6658,6 +6605,7 @@ MonoBehaviour:
   staminaCost: 10
   FearValue: 0
   Type: 0
+  sfxToPlayOnTrigger: {fileID: 0}
 --- !u!114 &1178634722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7976,7 +7924,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26206
+  m_Name: pb_Mesh98320
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8330,12 +8278,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyOnce: 1
   interactionName: Change Picture
-  staminaCost: 10
-  FearValue: 35
+  staminaCost: 5
+  FearValue: 25
   Type: 2
   TargetRenderer: {fileID: 1697500960}
   NewMaterial: {fileID: 2100000, guid: ffd68f6e0f3817348aed329a1d8ddc23, type: 2}
   BaseMaterial: {fileID: 2100000, guid: b1a3f4e0232c1d040861f7b44c80f8a4, type: 2}
+  sfxToPlayOnTrigger: {fileID: 8300000, guid: 9477c459c20da5b4fad0b6fa430b15b3, type: 3}
+  sfxToPlayOnRevert: {fileID: 8300000, guid: 9477c459c20da5b4fad0b6fa430b15b3, type: 3}
 --- !u!65 &1697500963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9208,7 +9158,7 @@ PrefabInstance:
     - target: {fileID: 3300000, guid: 699e1328c2540174899216e1aa73be13, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 64895435}
+      objectReference: {fileID: 59125449}
     - target: {fileID: 3300004, guid: 699e1328c2540174899216e1aa73be13, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -12717,7 +12667,7 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
-  m_Mesh: {fileID: 64895435}
+  m_Mesh: {fileID: 59125449}
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -14621,6 +14571,16 @@ PrefabInstance:
       propertyPath: _strength
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6622664411283266895, guid: 439993eea71e6e140928487b591629c2,
+        type: 3}
+      propertyPath: staminaCost
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622664411283266895, guid: 439993eea71e6e140928487b591629c2,
+        type: 3}
+      propertyPath: FearValue
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 439993eea71e6e140928487b591629c2, type: 3}
 --- !u!1001 &5843410314157299451
@@ -14634,36 +14594,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InteractablePotPlant
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842083646731976182, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5843410313841037428, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
-        type: 3}
-      propertyPath: staminaCost
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5843410313841037428, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
-        type: 3}
-      propertyPath: fearValue
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5843410313841037428, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
-        type: 3}
-      propertyPath: interactionName
-      value: Kick Over
-      objectReference: {fileID: 0}
-    - target: {fileID: 5843410313841037428, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
-        type: 3}
-      propertyPath: Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5843410313841037428, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
-        type: 3}
-      propertyPath: FearValue
-      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5843913342664147128, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
         type: 3}

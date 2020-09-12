@@ -116,6 +116,7 @@ MonoBehaviour:
   FearValue: 0
   Type: 0
   _strength: 1
+  sfxToPlayOnTrigger: {fileID: 8300000, guid: d03bf7d57e2a44a439ba96ffbef6fa3f, type: 3}
 --- !u!65 &7923893505987311338
 BoxCollider:
   m_ObjectHideFlags: 0

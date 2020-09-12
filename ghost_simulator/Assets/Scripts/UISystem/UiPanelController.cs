@@ -1,5 +1,4 @@
-﻿using CurrencySystem;
-using GameStateSystem;
+﻿using GameStateSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,9 +13,7 @@ namespace UISystem
         
         private void Start()
         {
-
             _gameStateController = FindObjectOfType<GameStateController>();
-            
             continueButton.onClick.RemoveAllListeners();
             skillTreeCanvasObject.SetActive(false);
         }

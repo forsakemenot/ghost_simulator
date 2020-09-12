@@ -64,6 +64,21 @@ namespace Interactables
             return OnlyOnce && alreadyUsed;
         }
 
+        public virtual void PlaySfx(AudioClip sfxClip)
+        {
+          var source = CreateSfxObjectInstance();
+          source.PlayOneShot(sfxClip);
+        }
+
+        private AudioSource CreateSfxObjectInstance()
+        {    
+            var sfxGo = new GameObject();
+            var audioSource = sfxGo.AddComponent<AudioSource>();
+            return audioSource;
+
+        }
+
+
         public virtual void Revert()
         {
             if(Revertable)

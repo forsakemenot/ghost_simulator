@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 5843410313841037429}
   - component: {fileID: 5843410313841037416}
   - component: {fileID: 5843410313841037428}
+  - component: {fileID: 1000999213}
+  - component: {fileID: 1000999214}
+  - component: {fileID: 1000999219}
   m_Layer: 0
   m_Name: InteractablePotPlant
   m_TagString: Untagged
@@ -61,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28646867ddcf90a4989276acd313ea43, type: 2}
+  - {fileID: 2100000, guid: ddb8adc264ac9364183930819301d94d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,7 +127,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyOnce: 0
+  interactionName: Kick Over
+  staminaCost: 5
+  FearValue: 25
+  Type: 2
+  sfxToPlayOnTrigger: {fileID: 8300000, guid: cfc97aec14a51ed4aa3e9fe15fec4c8c, type: 3}
+--- !u!114 &1000999213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5842083646731976182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d047a88f70181041935515d6ccbb9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyOnce: 0
   interactionName: 
-  staminaCost: 0
-  FearValue: 0
-  Type: 0
+  staminaCost: 10
+  FearValue: 35
+  Type: 2
+--- !u!114 &1000999214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5842083646731976182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605df6b2863dbe24499492c6068ea165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyOnce: 0
+  interactionName: 
+  staminaCost: 5
+  FearValue: 20
+  Type: 2
+--- !u!114 &1000999219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5842083646731976182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7a36afe95f6934a8b492e5e4103c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetectionDistance: 20
+  LastRevertableInteraction: {fileID: 0}
+  currentState: 0

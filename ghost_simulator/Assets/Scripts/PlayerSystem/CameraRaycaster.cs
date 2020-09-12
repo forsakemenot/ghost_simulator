@@ -36,7 +36,6 @@ namespace PlayerSystem
                         return;
 
                 if (!_isInteractionEnable || hitItem.CheckLimitedUse()) return;
-
                 ShowDisplayOption(hitItem);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -45,7 +44,7 @@ namespace PlayerSystem
                 }
             } 
         }
-
+        
         private bool HandlePickUpObject(ItemInteraction hitItem)
         {
             if (Input.GetKeyUp(KeyCode.Mouse0))

@@ -9,6 +9,8 @@ public class PlayAnimationInteraction : ItemInteraction
     [SerializeField] private string Trigger;
     [SerializeField] private string ReverseTrigger;
     private Animator anim;
+    [SerializeField] private AudioClip sfxToPlayOnTrigger;
+    [SerializeField] private AudioClip sfxToPlayOnRevert;
 
     public override bool Revertable { get { return true; } }
 
@@ -21,6 +23,7 @@ public class PlayAnimationInteraction : ItemInteraction
     public override void Execute(PlayerEntityController playerEntityController)
     {
         base.Execute(playerEntityController);
+        base.PlaySfx(sfxToPlayOnTrigger);
         anim.SetTrigger(Trigger);
     }
 
@@ -28,5 +31,6 @@ public class PlayAnimationInteraction : ItemInteraction
     {
         anim.SetTrigger(ReverseTrigger);
         base.Revert();
+        base.PlaySfx(sfxToPlayOnRevert);
     }
 }

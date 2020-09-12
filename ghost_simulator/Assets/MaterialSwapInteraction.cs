@@ -10,12 +10,15 @@ public class MaterialSwapInteraction : ItemInteraction
     public Material NewMaterial;
     public Material BaseMaterial;
 
+    [SerializeField] private AudioClip sfxToPlayOnTrigger;
+    [SerializeField] private AudioClip sfxToPlayOnRevert;
+    
     public override bool Revertable { get { return true; } }
 
     public override void Execute(PlayerEntityController playerEntityController)
     {
         base.Execute(playerEntityController);
-
+        base.PlaySfx(sfxToPlayOnTrigger);
         TargetRenderer.sharedMaterials = new Material[] { NewMaterial, NewMaterial };
     }
 
@@ -23,5 +26,6 @@ public class MaterialSwapInteraction : ItemInteraction
     {
         TargetRenderer.sharedMaterials = new Material[] { BaseMaterial, BaseMaterial };
         base.Revert();
+        base.PlaySfx(sfxToPlayOnRevert);
     }
 }
