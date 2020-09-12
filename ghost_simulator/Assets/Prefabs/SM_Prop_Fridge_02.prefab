@@ -438,8 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DetectionDistance: 2
-  LastRevertableInteraction: {fileID: 0}
-  currentState: 0
+  LastRevertableInteraction: {fileID: 5254233582935568292}
+  currentState: 1
 --- !u!114 &5254233582935568291
 MonoBehaviour:
   m_ObjectHideFlags: 0

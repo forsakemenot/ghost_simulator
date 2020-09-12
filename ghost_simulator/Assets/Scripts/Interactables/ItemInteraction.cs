@@ -54,6 +54,7 @@ namespace Interactables
                     return;
             }
 
+            playerEntityController.DeductStamina(staminaCost);
             alreadyUsed = true;
 
             if(Revertable)
@@ -93,7 +94,7 @@ namespace Interactables
         {
             Debug.Log(name + "  try HL  ");
             Debug.Log(item + "  is item  ");
-            Debug.Log(item.Outline + "  is outline  ");
+            // Debug.Log(item.Outline + "  is outline  ");
 
             item.Outline.enabled = highlighted;
         }

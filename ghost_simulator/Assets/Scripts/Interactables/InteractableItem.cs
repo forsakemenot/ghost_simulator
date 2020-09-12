@@ -30,7 +30,8 @@ namespace Interactables
         {
             Debug.Log(name + "    ");
             Outline = GetComponent<Outline>();
-            Outline.enabled = false;
+            if(Outline!=null)
+                Outline.enabled = false;
             basePosition = transform.position;
         }
 

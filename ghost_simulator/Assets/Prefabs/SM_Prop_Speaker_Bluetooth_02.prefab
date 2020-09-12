@@ -140,8 +140,9 @@ GameObject:
   - component: {fileID: 2811688898774520102}
   - component: {fileID: 2811688900438508262}
   - component: {fileID: 2811688900438508261}
-  - component: {fileID: 2811688900438508260}
   - component: {fileID: 2811688900438508259}
+  - component: {fileID: 1610643021}
+  - component: {fileID: 5727513459525413939}
   m_Layer: 0
   m_Name: SM_Prop_Speaker_Bluetooth_02
   m_TagString: Untagged
@@ -156,7 +157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2811688898776780774}
-  m_LocalRotation: {x: -0, y: 0.550314, z: -0, w: 0.83495784}
+  m_LocalRotation: {x: 0, y: 0.5503131, z: 0, w: 0.8349584}
   m_LocalPosition: {x: -2.99612, y: -0.34060013, z: 2.3799002}
   m_LocalScale: {x: 0.6913473, y: 0.69134694, z: 0.69134694}
   m_Children:
@@ -240,24 +241,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.39999998, y: 0.14999999, z: 0.09459829}
   m_Center: {x: -0.00000023841858, y: 0.07499988, z: 0}
---- !u!114 &2811688900438508260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2811688898776780774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca3fcd5d679d6f449bd6a8344a52c53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyOnce: 0
-  interactionName: Turn Off
-  staminaCost: 5
-  FearValue: 25
-  Type: 2
-  sourceObject: {fileID: 2811688898576838259}
 --- !u!114 &2811688900438508259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,5 +254,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DetectionDistance: 5
-  LastRevertableInteraction: {fileID: 2811688900438508260}
-  currentState: 0
+  LastRevertableInteraction: {fileID: 1610643021}
+  currentState: 1
+--- !u!114 &1610643021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811688898776780774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2907c26255c5149a1516e5903cd76d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyOnce: 0
+  interactionName: Turn Off
+  staminaCost: 5
+  FearValue: 25
+  Type: 2
+  audioSource: {fileID: 2811688898576838259}
+  sfxOnTrigger: {fileID: 8300000, guid: 4dedf34c5c0f9bb43991f3a09b1ee08b, type: 3}
+  sfxOnRevert: {fileID: 8300000, guid: 4dedf34c5c0f9bb43991f3a09b1ee08b, type: 3}
+--- !u!114 &5727513459525413939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811688898776780774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.97823423, g: 1, b: 0.10849059, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
