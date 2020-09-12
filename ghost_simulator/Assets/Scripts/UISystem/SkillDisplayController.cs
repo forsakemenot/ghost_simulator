@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CurrencySystem;
 using SkillSystem;
+using TMPro;
 using UnityEngine;
 
 namespace UISystem
@@ -15,6 +16,7 @@ namespace UISystem
         [SerializeField] private GameObject skillLevel_3;
         [SerializeField] private GameObject skillLevel_4;
         [SerializeField] private GameObject skillLevel_5;
+        [SerializeField] private TextMeshProUGUI currentCurrencyText; 
         private List<SkillData> _skillList = new List<SkillData>();
 
         //[SerializeField] private SkillData skillEntry
@@ -24,6 +26,9 @@ namespace UISystem
             _currentCurrency = CurrencyController.Instance.GetCurrentCurrency();
             _skillList = skillController.GetSkillData();
 
+            currentCurrencyText.text = "Current Exp : "+_currentCurrency;
+            
+            
             skillLevel_1.SetActive(false);
                 skillLevel_2.SetActive(false);
             skillLevel_3.SetActive(false);
