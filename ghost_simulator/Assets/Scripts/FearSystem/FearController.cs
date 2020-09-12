@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace FearSystem
 {
@@ -18,7 +17,7 @@ namespace FearSystem
         public void FearIncrement(float changes)
         {
             _currentFear += changes;
-            fearGaugeDisplayController.RefreshDisplay();
+            fearGaugeDisplayController.RefreshDisplay(_currentFear);
         } 
        
     }

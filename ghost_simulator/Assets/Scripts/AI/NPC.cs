@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Interactables;
 using System.Linq;
+using FearSystem;
 
 public enum AIState
 {
@@ -32,6 +33,7 @@ public class NPC : MonoBehaviour
     private Animator anim;
     private NPCController npcController;
     private InteractableItem itemToRevert;
+    private FearController _fearController;
 
     public List<InteractableItem> ScaryItems { get; set; } = new List<InteractableItem>();  // When the player interact with an item add it to the list of item AI should react to ?
                                                                                             // then remove them from the list once the AI has reacted to it
@@ -47,6 +49,7 @@ public class NPC : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         npcController = GetComponentInParent<NPCController>(); // ugly referencing
+        _fearController = FindObjectOfType<FearController>(); // Better than mine for sure lol, V. 
 
         state = AIState.Roaming;
         SetNextRoamingDestination();
@@ -227,6 +230,7 @@ public class NPC : MonoBehaviour
     {
         Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
         npcController.NPCScared(item.FearValue);
+        _fearController.FearIncrement(item.FearValue);
         state = AIState.Scared;
 
         if (item.LastRevertableInteraction != null)

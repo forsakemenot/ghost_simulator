@@ -25,7 +25,7 @@ namespace UISystem
         {
             continueButton.onClick.AddListener(ReloadGame);
             skillTreeCanvasObject.SetActive(true);
-             skillTreeCanvasObject.GetComponent<SkillDisplayController>().Initialize();
+            skillTreeCanvasObject.GetComponent<SkillDisplayController>().Initialize();
         }
 
         private void ReloadGame()
