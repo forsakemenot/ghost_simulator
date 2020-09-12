@@ -11,6 +11,8 @@ namespace Interactables
         {
             base.Execute(playerEntityController);
 
+            item.LastRevertableInteraction = null; // do not let this item be reverted;
+
             Debug.Log("execute PU");
         }
     }

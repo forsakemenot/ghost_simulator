@@ -18,7 +18,6 @@ namespace Interactables
         public int FearValue;
         public InteractionType Type;
 
-
         public virtual bool Revertable { get { return false; } }
 
         protected InteractableItem item;
@@ -34,6 +33,8 @@ namespace Interactables
         {
             if(item == null)
                 item = GetComponent<InteractableItem>(); // juste in case we forgot to call base.Start in child class
+
+            SetHighlighted(false);
 
             switch (Type)
             {
@@ -86,6 +87,15 @@ namespace Interactables
                 item.LastRevertableInteraction = null;
                 alreadyUsed = false;
             }
+        }
+
+        public virtual void SetHighlighted( bool highlighted)
+        {
+            Debug.Log(name + "  try HL  ");
+            Debug.Log(item + "  is item  ");
+            Debug.Log(item.Outline + "  is outline  ");
+
+            item.Outline.enabled = highlighted;
         }
     }
 }

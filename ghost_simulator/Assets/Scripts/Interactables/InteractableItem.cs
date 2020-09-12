@@ -13,8 +13,11 @@ namespace Interactables
 
     public class InteractableItem : MonoBehaviour
     {
+
         public float DetectionDistance;
         public float FearValue { get; set; }
+        public Outline Outline { get; private set; }
+
 
         public ItemInteraction LastRevertableInteraction;
 
@@ -25,6 +28,9 @@ namespace Interactables
 
         private void Start()
         {
+            Debug.Log(name + "    ");
+            Outline = GetComponent<Outline>();
+            Outline.enabled = false;
             basePosition = transform.position;
         }
 
