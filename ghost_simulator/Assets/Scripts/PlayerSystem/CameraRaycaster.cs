@@ -13,6 +13,7 @@ namespace PlayerSystem
         private bool _isInteractionEnable;
         private bool _isPickupEnable;
         private GameObject _pickedObject;
+        private ItemInteraction lastHitItem;
 
         private void Start()
         {
@@ -27,6 +28,11 @@ namespace PlayerSystem
                 var hitItem = rayCastHit.transform.GetComponent<ItemInteraction>();
                 if (!hitItem)
                 {
+                    if(lastHitItem)
+                    {
+                        ResetLastHitItem();
+                    }
+
                     HideOption();
                     return;
                 }
@@ -36,13 +42,24 @@ namespace PlayerSystem
                         return;
 
                 if (!_isInteractionEnable || hitItem.CheckLimitedUse()) return;
-                ShowDisplayOption(hitItem);
+
+                if(lastHitItem != hitItem)
+                    ShowDisplayOption(hitItem);
+                
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     hitItem.Execute(_playerEntityController);
                     HideOption();
                 }
-            } 
+
+                lastHitItem = hitItem;
+            }
+        }
+
+        private void ResetLastHitItem()
+        {
+            lastHitItem?.SetHighlighted(false);
+            lastHitItem = null;
         }
         
         private bool HandlePickUpObject(ItemInteraction hitItem)
@@ -110,6 +127,7 @@ namespace PlayerSystem
 
         private void ShowDisplayOption(ItemInteraction hitItemInteraction)
         {
+            hitItemInteraction.SetHighlighted(true);
             interactText.text = hitItemInteraction.interactionName;
             interactText.gameObject.SetActive(true);
         }
