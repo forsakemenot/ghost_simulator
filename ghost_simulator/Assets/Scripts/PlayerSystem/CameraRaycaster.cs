@@ -24,17 +24,31 @@ namespace PlayerSystem
         {
             if (Physics.Raycast(transform.position, transform.forward, out var rayCastHit, 10))
             {
+                if (_isPickupEnable&& _pickedObject!= null)
+                {
+                 
+                    if (Input.GetKeyUp(KeyCode.Mouse1))
+                    {
+                        _pickedObject.GetComponent<ThrowInteraction>()?.Execute(_playerEntityController);
+
+                        ThrowObject(_pickedObject,
+                            _pickedObject.GetComponent<Rigidbody>());
+                    }   
+                }
+                
+                
                 var hitItem = rayCastHit.transform.GetComponent<ItemInteraction>();
                 if (!hitItem)
                 {
                     HideOption();
                     return;
                 }
-
+                
                 if (_isPickupEnable)
                     if (HandlePickUpObject(hitItem))
                         return;
 
+            
                 if (!_isInteractionEnable || hitItem.CheckLimitedUse()) return;
                 ShowDisplayOption(hitItem);
                 if (Input.GetKeyDown(KeyCode.E))
@@ -61,17 +75,6 @@ namespace PlayerSystem
                 }
             }
 
-            if (Input.GetKeyUp(KeyCode.Mouse1))
-            {
-                if (_pickedObject == null) return false;
-
-                _pickedObject.GetComponent<ThrowInteraction>()?.Execute(_playerEntityController);
-
-                ThrowObject(_pickedObject,
-                    _pickedObject.GetComponent<Rigidbody>());
-
-                return true;
-            }
 
             return false;
         }
