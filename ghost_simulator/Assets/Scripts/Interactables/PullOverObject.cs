@@ -9,10 +9,11 @@ namespace Interactables
 
         private Rigidbody _rigidbody;
         [SerializeField] private float _strength = 1;
-        [SerializeField] private AudioClip sfxToPlayOnTrigger; 
-      
-        private void Start()
+        [SerializeField] private AudioClip sfxToPlayOnTrigger;
+
+        protected override void Start()
         {
+            base.Start();
             _rigidbody = GetComponent<Rigidbody>();
             interactionName = "Pull Over";
             staminaCost = 3;
