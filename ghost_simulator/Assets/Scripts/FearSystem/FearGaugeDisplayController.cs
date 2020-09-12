@@ -33,7 +33,6 @@ namespace FearSystem
             {
                 if (!(_currentFear > _maxFear)) return;
                 _gameStateController.GamePlaySessionOver();
-                Debug.LogError("Fear Exceed max fear");
             });
         }
 
@@ -41,7 +40,6 @@ namespace FearSystem
         {
             _currentFear = val;
             fearFill.fillAmount = _currentFear / _maxFear;
-            Debug.LogError("FEARFILL : "+fearFill.fillAmount);
         }
     }
 }
