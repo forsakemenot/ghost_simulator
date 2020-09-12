@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda739efd58a5aa47bc648b7bfff09eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFear: 110
+  maxFear: 200
   fearGaugeDisplayController: {fileID: 0}
