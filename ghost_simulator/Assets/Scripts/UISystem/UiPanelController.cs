@@ -29,7 +29,9 @@ namespace UISystem
         }
 
         private void ReloadGame()
-        {     
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             _gameStateController.ReloadGamePlaySession();
         }
     }

@@ -33,10 +33,7 @@ namespace UISystem
         }
 
         private void PopulateSkillEntry(List<SkillData> skillList)
-        {
-            Debug.LogError(_currentCurrency);
-            
-            
+        {    
             var unlockedType = new List<SkillData>();
             var lockedType = new List<SkillData>();
             foreach (var skillData in skillList)
@@ -47,13 +44,11 @@ namespace UISystem
 
             foreach (var skillData in unlockedType) EnableUnlockedObjectFromSkillData(skillData);
 
-            foreach (var skillData in lockedType)
-            {
-                EnableLockedObjectFromSkillData(skillData);
-            }
+            foreach (var skillData in lockedType) EnableLockedObjectFromSkillData(skillData);
 
-
-        }
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+        }    
 
         private void EnableUnlockedObjectFromSkillData(SkillData skillData)
         {
