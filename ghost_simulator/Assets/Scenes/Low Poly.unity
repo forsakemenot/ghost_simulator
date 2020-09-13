@@ -14226,15 +14226,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 221300057, guid: 4c246c026fb6bdb4caef4b4b1744d30f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e7a99668beb31d44bac3079118691e0a,
+        type: 2}
+    - target: {fileID: 221300057, guid: 4c246c026fb6bdb4caef4b4b1744d30f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5539099834511257757, guid: e7a99668beb31d44bac3079118691e0a,
+        type: 2}
+    - target: {fileID: 221300057, guid: 4c246c026fb6bdb4caef4b4b1744d30f, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 325076753, guid: 4c246c026fb6bdb4caef4b4b1744d30f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e7a99668beb31d44bac3079118691e0a,
+        type: 2}
+    - target: {fileID: 325076753, guid: 4c246c026fb6bdb4caef4b4b1744d30f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5539099834511257757, guid: e7a99668beb31d44bac3079118691e0a,
+        type: 2}
     - target: {fileID: 421064941, guid: 4c246c026fb6bdb4caef4b4b1744d30f, type: 3}
       propertyPath: timerController
       value: 
       objectReference: {fileID: 1957649619}
+    - target: {fileID: 476645359249712730, guid: 4c246c026fb6bdb4caef4b4b1744d30f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2376197307122754465, guid: 4c246c026fb6bdb4caef4b4b1744d30f,
         type: 3}
       propertyPath: skillController
       value: 
       objectReference: {fileID: 1747675691}
+    - target: {fileID: 4999664973757837520, guid: 4c246c026fb6bdb4caef4b4b1744d30f,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Enemy can be Interact with '
+      objectReference: {fileID: 0}
     - target: {fileID: 7659782768933400317, guid: 4c246c026fb6bdb4caef4b4b1744d30f,
         type: 3}
       propertyPath: m_LocalPosition.x

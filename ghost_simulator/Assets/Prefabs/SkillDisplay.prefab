@@ -61,6 +61,7 @@ MonoBehaviour:
   skillLevel_3: {fileID: 1949742389846539707}
   skillLevel_4: {fileID: 1949742390583382631}
   skillLevel_5: {fileID: 1949742391549290710}
+  currentCurrencyText: {fileID: 0}
 --- !u!1 &7166150436545015513
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +845,7 @@ PrefabInstance:
     - target: {fileID: 4899637806504494639, guid: 6e8c481dfcc92674bb8a3ef06223e4bd,
         type: 3}
       propertyPath: m_Text
-      value: The object can be hold and throw out (2000 pt)
+      value: The object can be hold and throw out (200 pt)
       objectReference: {fileID: 0}
     - target: {fileID: 4899637806504494639, guid: 6e8c481dfcc92674bb8a3ef06223e4bd,
         type: 3}
