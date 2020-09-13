@@ -25,6 +25,7 @@ namespace Interactables
         public ItemState currentState;
 
         private Vector3 basePosition;
+        private Vector3 baseRotation;
 
         private void Start()
         {
@@ -33,6 +34,7 @@ namespace Interactables
             if(Outline!=null)
                 Outline.enabled = false;
             basePosition = transform.position;
+            baseRotation = transform.eulerAngles;
         }
 
         public void ApplyInteractionValues(ItemState state, float fear, float detectionDistance = -1)
@@ -53,7 +55,7 @@ namespace Interactables
         public void ResetPosition()
         {
             transform.position = basePosition;
-            transform.eulerAngles = Vector3.zero;
+            transform.eulerAngles = baseRotation;
         }
     }
 }

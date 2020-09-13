@@ -23,6 +23,14 @@ namespace Interactables
         {
             _rigidbody.AddForce(transform.forward * _strength, ForceMode.Impulse);      
             base.PlaySfx(sfxToPlayOnTrigger);
+            base.Execute(playerEntityController);
+        }
+
+        public override void Revert()
+        {
+            item.ResetPosition();
+            item.ResetState();
+            base.Revert();
         }
     }
 }
