@@ -17,7 +17,7 @@ public class TestWriteOnMirror : ItemInteraction
     public override void Execute(PlayerEntityController playerEntityController)
     {
         testMat.color = Color.red;
-        item.ApplyInteractionValues(ItemState.Modified, FearValue);
+        item.ApplyInteractionValues(ItemState.Modified, FearValue, RevertDelay);
 
         NPCController.AddItemToWatch(item);
     }

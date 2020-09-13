@@ -5,7 +5,8 @@ public enum InteractionType
 {
     None,
     Instant,
-    Permanent
+    Permanent,
+    Forced
 }
 
 namespace Interactables
@@ -16,6 +17,7 @@ namespace Interactables
         public string interactionName;
         public float staminaCost;
         public int FearValue;
+        public float RevertDelay;
         public InteractionType Type;
 
         public virtual bool Revertable { get { return false; } }
@@ -36,17 +38,26 @@ namespace Interactables
 
             SetHighlighted(false);
 
+            if (Revertable)
+                item.LastRevertableInteraction = this;
+
             switch (Type)
             {
                 case InteractionType.Instant:
-                    item.ApplyInteractionValues(ItemState.Modified, FearValue);
+                    item.ApplyInteractionValues(ItemState.Modified, FearValue, RevertDelay);
                     NPCController.TestNPCsReaction(item);
                     item.ResetState();
                     break;
 
                 case InteractionType.Permanent:
-                    item.ApplyInteractionValues(ItemState.Modified, FearValue);
+                    item.ApplyInteractionValues(ItemState.Modified, FearValue, RevertDelay);
                     NPCController.AddItemToWatch(item);
+                    break;
+
+                case InteractionType.Forced:
+                    item.ApplyInteractionValues(ItemState.Modified, FearValue, RevertDelay);
+                    NPCController.ForceNPCsReaction(item);
+                    item.ResetState();
                     break;
 
                 default:
@@ -56,9 +67,6 @@ namespace Interactables
 
             playerEntityController.DeductStamina(staminaCost);
             alreadyUsed = true;
-
-            if(Revertable)
-                item.LastRevertableInteraction = this;
         }
 
         public bool CheckLimitedUse()
@@ -92,8 +100,8 @@ namespace Interactables
 
         public virtual void SetHighlighted( bool highlighted)
         {
-            Debug.Log(name + "  try HL  ");
-            Debug.Log(item + "  is item  ");
+            //Debug.Log(name + "  try HL  ");
+            //Debug.Log(item + "  is item  ");
             // Debug.Log(item.Outline + "  is outline  ");
 
             item.Outline.enabled = highlighted;

@@ -36,6 +36,15 @@ public class NPCController : MonoBehaviour
         }
     }
 
+    public static void ForceNPCsReaction(InteractableItem item) // Check if item is seen by NPCs now
+    {
+        foreach (NPC npc in npcs)
+        {
+            if (npc.IsAvailableForSightCheck)
+                npc.ReactToItem(item);
+        }
+    }
+
     public void NPCScared(float score)
     {
         OnNPCScared?.Invoke(score);

@@ -18,7 +18,7 @@ public class TestTVScreamer : ItemInteraction
         transform.eulerAngles += new Vector3(0, 30, 0);
 
         // Set Item
-        item.ApplyInteractionValues(ItemState.Modified, FearValue);
+        item.ApplyInteractionValues(ItemState.Modified, FearValue, RevertDelay);
 
         // Test NPCs sight instantly
         NPCController.TestNPCsReaction(item);

@@ -13,15 +13,14 @@ namespace Interactables
 
     public class InteractableItem : MonoBehaviour
     {
-
         public float DetectionDistance;
+
         public float FearValue { get; set; }
+        public float RevertDelay { get; set; }
         public Outline Outline { get; private set; }
 
-
-        public ItemInteraction LastRevertableInteraction;
-
         [Header("Debug")]
+        public ItemInteraction LastRevertableInteraction;
         public ItemState currentState;
 
         private Vector3 basePosition;
@@ -37,10 +36,13 @@ namespace Interactables
             baseRotation = transform.eulerAngles;
         }
 
-        public void ApplyInteractionValues(ItemState state, float fear, float detectionDistance = -1)
+        public void ApplyInteractionValues(ItemState state, float fear, float revertDelay, float detectionDistance = -1)
         {
             currentState = state;
             FearValue = fear;
+            RevertDelay = revertDelay;
+
+            if (revertDelay < 1) revertDelay = 1;
 
             if (detectionDistance != -1) // i don't think we'll need it, but this allows ItemInteraction to change the detection distance for this item ¯\_(ツ)_/¯
                 DetectionDistance = detectionDistance; // otherwise we need to add a way to change it back to normal too ?

@@ -7,16 +7,19 @@ namespace Interactables
     public class RoofLightSwitch : ItemInteraction
     {
         [SerializeField] private List<Light> lights;
+        public override bool Revertable { get { return true; } }
         private bool _isLightEnabled;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             interactionName = "Turn Off";
             staminaCost = 2;
         }
 
         public override void Execute(PlayerEntityController playerEntityController)
         {
+            base.Execute(playerEntityController);
             EnableLight(!_isLightEnabled);   
         }
 
@@ -33,6 +36,12 @@ namespace Interactables
         private void UpdateInteractionName(bool isLightEnabled)
         {
             interactionName = isLightEnabled ? "Turn Off" : "Turn On";
+        }
+
+        public override void Revert()
+        {
+            base.Revert();
+            EnableLight(true);
         }
     }
 }

@@ -34,7 +34,7 @@ public class NPC : MonoBehaviour
     private NPCController npcController;
     private InteractableItem itemToRevert;
     private FearController _fearController;
-
+    private float scaredIdleBonus;
     public List<InteractableItem> ScaryItems { get; set; } = new List<InteractableItem>();  // When the player interact with an item add it to the list of item AI should react to ?
                                                                                             // then remove them from the list once the AI has reacted to it
 
@@ -116,14 +116,15 @@ public class NPC : MonoBehaviour
     private void RoamingToScared()
     {
         navAgent.SetDestination(transform.position);
-        StartIdle(true);
+        StartIdle(true, scaredIdleBonus);
+        scaredIdleBonus = 0;
     }
 
-    private void StartIdle(bool scared)
+    private void StartIdle(bool scared, float idleBonus = 0)
     {
         //Debug.Log("Start Idle");
         state = AIState.Idle;
-        idleStartTime = Time.time;
+        idleStartTime = Time.time + idleBonus;
 
         if(scared)
             anim.SetTrigger("Scared");
@@ -213,7 +214,7 @@ public class NPC : MonoBehaviour
         return false;
     }
 
-    private bool ReactToItem(InteractableItem item) // useless method rightNow, but i keep it if we had other reactions later ?
+    public bool ReactToItem(InteractableItem item) // useless method rightNow, but i keep it if we had other reactions later ?
     {
         switch(item.currentState)
         {
@@ -231,12 +232,13 @@ public class NPC : MonoBehaviour
         Debug.Log(gameObject.name + " has been scared for " + item.FearValue + " points.");
         npcController.NPCScared(item.FearValue);
         _fearController.FearIncrement(item.FearValue);
+        scaredIdleBonus = item.RevertDelay - idleDuration;
         state = AIState.Scared;
 
         if (item.LastRevertableInteraction != null)
         {
             itemToRevert = item;
-            Invoke("RevertItem", 1);
+            Invoke("RevertItem", item.RevertDelay);
         }
             
     }
