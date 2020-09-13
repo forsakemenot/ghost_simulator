@@ -3400,6 +3400,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312471730}
     m_Modifications:
+    - target: {fileID: 5254233582935568292, guid: 3a591fcb3ceaf504989897fec7ecb25e,
+        type: 3}
+      propertyPath: RevertDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5254233583390333134, guid: 3a591fcb3ceaf504989897fec7ecb25e,
         type: 3}
       propertyPath: m_Name
@@ -3468,7 +3473,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-16924
+  m_Name: pb_Mesh-32980
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13619,6 +13624,16 @@ PrefabInstance:
       propertyPath: lights.Array.data[1]
       value: 
       objectReference: {fileID: 1075720084}
+    - target: {fileID: 1434860436305242000, guid: f36018e5549cd06409109c3c83a3b686,
+        type: 3}
+      propertyPath: RevertDelay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434860436305242000, guid: f36018e5549cd06409109c3c83a3b686,
+        type: 3}
+      propertyPath: Type
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1434860436305242090, guid: f36018e5549cd06409109c3c83a3b686,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13696,6 +13711,45 @@ PrefabInstance:
       objectReference: {fileID: 585192568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f36018e5549cd06409109c3c83a3b686, type: 3}
+--- !u!1 &1434860435350870482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1434860436305242091, guid: f36018e5549cd06409109c3c83a3b686,
+    type: 3}
+  m_PrefabInstance: {fileID: 1434860435350870481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1434860435350870483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434860435350870482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.97823423, g: 1, b: 0.10849059, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &1434860435350870484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434860435350870482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7a36afe95f6934a8b492e5e4103c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetectionDistance: 10
+  LastRevertableInteraction: {fileID: 0}
+  currentState: 0
 --- !u!1001 &2811688900565300151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13703,6 +13757,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312471730}
     m_Modifications:
+    - target: {fileID: 1610643021, guid: 2856bc3aa34bd514e9a4f1c04e2e1e7c, type: 3}
+      propertyPath: RevertDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610643021, guid: 2856bc3aa34bd514e9a4f1c04e2e1e7c, type: 3}
+      propertyPath: Type
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2811688898776290246, guid: 2856bc3aa34bd514e9a4f1c04e2e1e7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14068,6 +14130,11 @@ PrefabInstance:
       propertyPath: Type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6622664411283266895, guid: 439993eea71e6e140928487b591629c2,
+        type: 3}
+      propertyPath: RevertDelay
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 439993eea71e6e140928487b591629c2, type: 3}
 --- !u!1001 &5272203504459984716
@@ -14077,6 +14144,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312471730}
     m_Modifications:
+    - target: {fileID: 5272203502931009646, guid: 48107b0479a5b444d86807f0c443c942,
+        type: 3}
+      propertyPath: RevertDelay
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5272203503270024959, guid: 48107b0479a5b444d86807f0c443c942,
         type: 3}
       propertyPath: m_Name
@@ -14150,6 +14222,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InteractablePotPlant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843410313841037428, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
+        type: 3}
+      propertyPath: RevertDelay
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5843913342664147128, guid: 7b30f2aa94da1cb4c9eee9dc2230ab09,
         type: 3}

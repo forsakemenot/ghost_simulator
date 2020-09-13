@@ -15,6 +15,7 @@ namespace Interactables
             base.Start();
             interactionName = "Turn Off";
             staminaCost = 2;
+            _isLightEnabled = true;
         }
 
         public override void Execute(PlayerEntityController playerEntityController)
@@ -26,7 +27,7 @@ namespace Interactables
         private void EnableLight(bool isEnable)
         {
             foreach (var lightElement in lights) 
-                lightElement.intensity = isEnable ? 1 : 0;
+                lightElement.intensity = isEnable ? 3.2f : 0;
         
         
             _isLightEnabled = !_isLightEnabled;  
